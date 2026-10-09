@@ -1,0 +1,34 @@
+id: "bitrix_full_path_disclosure"
+
+info:
+  name: Bitrix Full Path Disclosure
+  author: JhonnyBonny
+  severity: low
+  description: Detect a PHP diagnostic disclosing an absolute path to a Bitrix PHP file.
+  reference:
+    - https://github.com/cr1f/writeups/blob/main/attacking_bitrix.pdf
+  classification:
+  tags: bitrix,exposure
+
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}/?USER_FIELD_MANAGER=1'
+      - '{{BaseURL}}/bitrix/admin/restore_export.php'
+      - '{{BaseURL}}/bitrix/admin/tools_index.php'
+      - '{{BaseURL}}/bitrix/bitrix.php'
+      - '{{BaseURL}}/bitrix/modules/main/ajax_tools.php'
+      - '{{BaseURL}}/bitrix/php_interface/after_connect_d7.php'
+      - '{{BaseURL}}/bitrix/themes/.default/.description.php'
+      - '{{BaseURL}}/bitrix/components/bitrix/main.ui.selector/templates/.default/template.php'
+      - '{{BaseURL}}/bitrix/components/bitrix/forum.user.profile.edit/templates/.default/interface.php'
+
+
+
+    # Require a PHP diagnostic and its disclosed Bitrix path in the same line.
+    # Generic UI text such as "error" does not establish path disclosure.
+    matchers:
+      - type: regex
+        part: body
+        regex:
+          - '(?i)(?:fatal error|parse error|warning|notice|uncaught (?:error|exception))[^\r\n]{0,1000}\bin\s+(?:<[^>]+>\s*)*(?:/[a-z0-9_.~ -]+(?:/[a-z0-9_.~ -]+)*|[a-z]:\\[^<>"\r\n]+)[/\\]bitrix[/\\][^<>"\r\n]*\.php(?:</[^>]+>)*(?:\s+on\s+line\s+(?:<[^>]+>)*\d+|:\d+)'

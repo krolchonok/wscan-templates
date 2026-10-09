@@ -1,0 +1,44 @@
+id: microsoft-winrm-credssp-advertised
+info:
+  name: 'WinRM: объявлен CredSSP — проверить делегирование учётных данных'
+  author: wscan
+  severity: info
+  description: При 401 и Microsoft-HTTPAPI проверяет объявление CredSSP. Делегирование повышает требования к доверию
+    серверу. Это не подтверждает CVE-2018-0886, отсутствие патча или возможность relay. Проверяется Microsoft WinRM
+    выбранного HTTP(S)-сервиса, обычно TCP 5985/5986; соседние порты не проверяются. Один POST /wsman без учётки,
+    Authorization и попытки входа. Редиректы отключены; нет команд, записи или изменения настроек. Прокси и нестандартный
+    URL prefix могут скрыть сервис; ошибка транспорта не означает безопасную конфигурацию.
+  reference:
+  - https://learn.microsoft.com/en-us/powershell/scripting/learn/remoting/winrmsecurity
+  - https://learn.microsoft.com/en-us/windows/win32/winrm/authentication-for-remote-connections
+  metadata:
+    vendor: microsoft
+    product: winrm
+    max-request: 1
+  tags: discovery,winrm,windows,credssp
+http:
+- method: POST
+  path:
+  - '{{BaseURL}}/wsman'
+  redirects: false
+  max-size: 65536
+  matchers-condition: and
+  matchers:
+  - type: status
+    status:
+    - 401
+  - type: regex
+    part: header
+    regex:
+    - (?im)^server\s*:\s*Microsoft-HTTPAPI/[0-9.]+
+  - type: regex
+    part: header
+    regex:
+    - (?im)^www-authenticate\s*:\s*(?:[^\r\n]*,\s*)?CredSSP(?:\s|,|$)
+  extractors:
+  - type: regex
+    name: advertised-authentication
+    part: header
+    group: 1
+    regex:
+    - (?im)^www-authenticate\s*:\s*([^\r\n]+)

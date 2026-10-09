@@ -1,0 +1,29 @@
+id: unauth-psql
+info:
+  name: 'PostgreSQL: вход postgres без запроса пароля'
+  author: pussycat0x
+  severity: high
+  description: 'Локальная правка wscan: наблюдает успешный вход и AuthenticationOk без предварительного
+    запроса пароля на том же соединении. Проверяется роль postgres и база postgres на выбранном TCP-порту
+    (обычно 5432). Это доступ без проверки пароля, а не безымянный пользователь и не доказательство конкретного
+    trust-правила. SQL для перечисления баз не выполняется; клиент отправляет служебный PING. TLS-only
+    сервисы не проверяются.'
+  reference:
+  - https://www.postgresql.org/docs/9.6/auth-methods.html
+  metadata:
+    verified: 'true'
+    max-request: 1
+    shodan-query: port:5432 product:"PostgreSQL"
+  tags: network,postgresql,db,unauth,misconfig,tcp,vuln
+javascript:
+- code: var m = require('nuclei/postgres'); var c = m.PGClient(); var r = c.AuditConnect(Host, Port, 'postgres',
+    ''); r.connected && r.authentication === 'none';
+  args:
+    Host: '{{Host}}'
+    Port: 5432
+  matchers:
+  - type: dsl
+    dsl:
+    - success == true
+    - response == true
+    condition: and

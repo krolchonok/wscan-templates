@@ -1,0 +1,50 @@
+id: smb-anonymous-access
+
+info:
+  name: "SMB: перечисление шар без учётки — только чтение"
+  author: pussycat0x
+  severity: high
+  description: |
+    Перечисляет SMB-шары с пустыми именем и паролем, читает корневые каталоги.
+    Совпадение подтверждает перечисление шар с запрошенной null identity; сервер может
+    сопоставить её guest. Фактический режим сессии движок пока не выводит.
+    SMB/TCP, типичный порт 445, запрос идёт на выбранный порт сервиса.
+    Предоставленная учётка не требуется; выполняется одна попытка входа.
+    Файлы и каталоги не создаются; право записи остаётся неизвестным.
+    Отказ, timeout или требования signing/encryption дают неопределённый результат.
+  reference:
+    - https://wadcoms.github.io/wadcoms/SMBClient-List-Shares-Anonymous/
+  metadata:
+    verified: true
+    max-request: 1
+    shodan-query: port:445
+    product: dionaea
+    vendor: dionaea
+  tags: js,network,smb,enum,misconfig,vuln
+javascript:
+  - pre-condition: |
+      isPortOpen(Host,Port);
+    code: |
+      var m = require("nuclei/smb");
+      var c = m.SMBClient();
+      var response = c.ListSharesReadOnly(Host,Port,User,Pass);
+      Export(response);
+
+    args:
+      Host: "{{Host}}"
+      Port: "{{Port}}"
+      User: ""
+      Pass: ""
+
+    matchers:
+      - type: dsl
+        dsl:
+          - success == true
+          - response != "[]"
+        condition: and
+
+    extractors:
+      - type: dsl
+        dsl:
+          - response
+# Локальная адаптация wscan: чтение без пробной записи; upstream digest удалён.

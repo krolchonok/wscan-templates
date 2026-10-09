@@ -1,0 +1,48 @@
+id: microsoft-winrm-basic-over-http
+info:
+  name: 'WinRM: объявлен Basic без TLS — потенциально опасная конфигурация'
+  author: wscan
+  severity: medium
+  description: При 401 и Microsoft-HTTPAPI проверяет объявление Basic на HTTP URL. Это предложение Basic без TLS,
+    а не доказательство принятия пароля или AllowUnencrypted=True. Защита IPsec из ответа неизвестна. Basic по HTTPS
+    этой проверкой не отмечается. Проверяется Microsoft WinRM выбранного HTTP(S)-сервиса, обычно TCP 5985/5986;
+    соседние порты не проверяются. Один POST /wsman без учётки, Authorization и попытки входа. Редиректы отключены;
+    нет команд, записи или изменения настроек. Прокси и нестандартный URL prefix могут скрыть сервис; ошибка транспорта
+    не означает безопасную конфигурацию.
+  reference:
+  - https://learn.microsoft.com/en-us/powershell/scripting/learn/remoting/winrmsecurity
+  - https://learn.microsoft.com/en-us/windows/win32/winrm/authentication-for-remote-connections
+  metadata:
+    vendor: microsoft
+    product: winrm
+    max-request: 1
+  tags: misconfig,winrm,windows
+http:
+- method: POST
+  path:
+  - '{{BaseURL}}/wsman'
+  redirects: false
+  max-size: 65536
+  matchers-condition: and
+  matchers:
+  - type: status
+    status:
+    - 401
+  - type: regex
+    part: header
+    regex:
+    - (?im)^server\s*:\s*Microsoft-HTTPAPI/[0-9.]+
+  - type: regex
+    part: header
+    regex:
+    - (?im)^www-authenticate\s*:\s*(?:[^\r\n]*,\s*)?Basic(?:\s|,|$)
+  - type: dsl
+    dsl:
+    - starts_with(BaseURL, 'http://')
+  extractors:
+  - type: regex
+    name: advertised-authentication
+    part: header
+    group: 1
+    regex:
+    - (?im)^www-authenticate\s*:\s*([^\r\n]+)

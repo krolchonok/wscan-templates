@@ -1,0 +1,65 @@
+id: couchdb-default-login
+info:
+  name: CouchDB - Default Login
+  author: thefoggiest
+  severity: high
+  description: 'Локальная правка wscan: POST /_session с указанным именем и стандартным
+    либо пустым паролем. Совпадение требует имени именно проверяемого пользователя,
+    JSON ответа и AuthSession cookie. Проверяется HTTP(S) выбранного сервиса, обычно
+    5984; создаётся сеанс входа, без записи данных. Доступ без учётки проверяется
+    отдельно.'
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L
+    cvss-score: 8.3
+    cwe-id: CWE-522
+    cpe: cpe:2.3:a:apache:couchdb:*:*:*:*:*:*:*:*
+  metadata:
+    verified: true
+    max-request: 20
+    fofa-query: app="APACHE-CouchDB"
+    product: couchdb
+    vendor: apache
+  tags: default-login,couchdb,misconfig,vuln
+http:
+- payloads:
+    username:
+    - admin
+    - administrator
+    - couchdb
+    - root
+    password:
+    - admin
+    - test
+    - password
+    - couchdb
+    - ''
+  attack: clusterbomb
+  stop-at-first-match: true
+  matchers-condition: and
+  matchers:
+  - type: word
+    part: body
+    words:
+    - '{"ok":true'
+    - '"name":"'
+    - '"roles":['
+    condition: and
+  - type: word
+    part: header
+    words:
+    - application/json
+    - AuthSession=
+    condition: and
+  - type: status
+    status:
+    - 200
+  - type: dsl
+    dsl:
+    - contains(body, '"name":"' + username + '"')
+  method: POST
+  path:
+  - '{{BaseURL}}/_session'
+  headers:
+    Content-Type: application/x-www-form-urlencoded
+  body: name={{username}}&password={{password}}
+  redirects: false

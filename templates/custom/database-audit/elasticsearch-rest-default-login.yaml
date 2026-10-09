@@ -1,0 +1,50 @@
+id: elasticsearch-rest-default-login
+info:
+  name: 'Elasticsearch: стандартный или пустой пароль elastic — REST API'
+  author: wscan
+  severity: high
+  description: GET /_security/_authenticate без учётки должен вернуть 401; затем проверяются elastic/changeme
+    и elastic с пустым паролем через Basic. Совпадение требует 200, username=elastic и массива roles.
+    Anonymous identity и выключенная security не считаются стандартным паролем. HTTP(S) только выбранного
+    сервиса, обычно 9200; две попытки входа, без чтения документов и записи. Старые версии без API дают
+    неопределённое покрытие.
+  reference:
+  - https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-authenticate
+  metadata:
+    vendor: elastic
+    product: elasticsearch
+    max-request: 4
+  tags: elasticsearch,default-login,network,auth
+flow: http(1) && http(2)
+http:
+- method: GET
+  path:
+  - '{{BaseURL}}/_security/_authenticate'
+  redirects: false
+  matchers:
+  - type: status
+    status:
+    - 401
+    internal: true
+- method: GET
+  path:
+  - '{{BaseURL}}/_security/_authenticate'
+  headers:
+    Authorization: Basic {{authorization}}
+  redirects: false
+  payloads:
+    authorization:
+    - ZWxhc3RpYzpjaGFuZ2VtZQ==
+    - ZWxhc3RpYzo=
+  stop-at-first-match: true
+  matchers-condition: and
+  matchers:
+  - type: status
+    status:
+    - 200
+  - type: regex
+    part: body
+    regex:
+    - '"username"\s*:\s*"elastic"'
+    - '"roles"\s*:\s*\['
+    condition: and

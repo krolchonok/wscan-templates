@@ -1,0 +1,26 @@
+id: redis-no-auth-access
+info:
+  name: 'Redis: INFO доступен без AUTH'
+  author: wscan
+  severity: high
+  description: Отправляет INFO без AUTH на выбранный TCP-порт Redis (обычно 6379). Совпадение требует
+    redis_version в ответе. Доказывает доступ к INFO без авторизации, но не возможность чтения ключей
+    или записи; ACL могут разрешать только эту команду. Учётка не нужна, изменений состояния и запросов
+    к внешним сервисам нет. TLS-only Redis не поддерживается этой проверкой.
+  reference:
+  - https://redis.io/docs/latest/commands/auth/
+  - https://redis.io/docs/latest/commands/info/
+  metadata:
+    vendor: redis
+    product: redis
+    max-request: 1
+  tags: redis,network,unauth,misconfig
+javascript:
+- code: var m = require('nuclei/redis'); m.GetServerInfo(Host, Port);
+  args:
+    Host: '{{Host}}'
+    Port: 6379
+  matchers:
+  - type: word
+    words:
+    - 'redis_version:'

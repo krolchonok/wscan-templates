@@ -1,0 +1,56 @@
+id: kyocera-netviewer-address-book-interface
+
+info:
+  name: "Kyocera Net Viewer: доступен интерфейс address_book (HTTP(S), без экспорта)"
+  author: wscan
+  severity: info
+  description: |
+    Запрашивает только публичное WSDL-описание SOAP интерфейса Kyocera Net Viewer.
+    Порт по умолчанию TCP 9091, HTTPS; используется выбранный HTTP(S) URL/порт.
+    Идентифицирует namespace Kyocera address_book и объявления операций.
+    Экспорт не создаётся, адресная книга, логины и пароли не запрашиваются.
+    Результат означает наличие интерфейса, связанного с CVE-2022-1026,
+    но не подтверждает уязвимость или отсутствие аутентификации у операций.
+    Если WSDL закрыт или устройство не публикует его через GET, результата
+    не будет; это не является подтверждением исправления CVE.
+  reference:
+    - https://github.com/ushst/getKyoceraCreds
+    - https://www.rapid7.com/blog/post/2022/03/29/cve-2022-1026-kyocera-net-view-address-book-exposure/
+  metadata:
+    vendor: kyocera
+    product: net-viewer
+    default-port: 9091
+    detection-method: public-wsdl
+    related-cve: CVE-2022-1026
+  tags: kyocera,discovery,safe,exposure
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/ws/km-wsdl/setting/address_book?wsdl"
+      - "{{BaseURL}}/ws/km-wsdl/setting/address_book?WSDL"
+    matchers-condition: and
+    matchers:
+      - type: status
+        status: [200]
+      - type: word
+        part: body
+        words:
+          - "http://www.kyoceramita.com/ws/km-wsdl/setting/address_book"
+      - type: regex
+        part: body
+        regex:
+          - '<(?:[A-Za-z0-9_]+:)?definitions(?:\s|>)'
+      - type: word
+        part: body
+        words:
+          - "create_personal_address_enumeration"
+          - "get_personal_address_list"
+        condition: and
+    extractors:
+      - type: regex
+        name: declared_operations
+        part: body
+        regex:
+          - '<(?:[A-Za-z0-9_]+:)?operation\s+[^>]*name=["\x27](create_personal_address_enumeration|get_personal_address_list)["\x27]'
+        group: 1

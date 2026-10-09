@@ -1,0 +1,30 @@
+id: ssh-auth-methods
+
+info:
+  name: SSH Auth Methods - Detection
+  author: Ice3man543
+  severity: info
+  description: |
+    Detects the authentication methods advertised by the SSH server before user authentication.
+  reference:
+    - https://nmap.org/nsedoc/scripts/ssh-auth-methods.html
+  metadata:
+    max-request: 1
+    shodan-query: product:"OpenSSH"
+  tags: js,detect,ssh,enum,network,discovery
+
+javascript:
+  - pre-condition: |
+      isPortOpen(Host,Port);
+    code: |
+      var m = require("nuclei/ssh");
+      var c = m.SSHClient();
+      var response = c.ConnectSSHInfoMode(Host, Port);
+      Export(response);
+    args:
+      Host: "{{Host}}"
+      Port: "{{Port}}"
+    extractors:
+      - type: json
+        json:
+          - '.UserAuth[]'
