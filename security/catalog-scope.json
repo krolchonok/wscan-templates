@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "scope": "external-target-scanner",
+  "excluded_prefixes": {
+    "cloud/": "Cloud account/configuration audit, not a selected external service",
+    "file/": "Local file inspection on the runner",
+    "code/windows/audit/": "Local Windows configuration audit",
+    "code/linux/": "Local Linux configuration audit",
+    "code/macos/": "Local macOS configuration audit",
+    "code/privilege-escalation/": "Local privilege escalation",
+    "code/windows/enumeration/unquoted-service-paths.yaml": "Local Windows service enumeration",
+    "code/windows/enumeration/weak-service-binary-permissions.yaml": "Local Windows service permissions"
+  },
+  "notes": [
+    "All self-contained templates and file protocol blocks are excluded regardless of directory.",
+    "Remote code/javascript clients remain eligible; engine support remains a separate requirement.",
+    "Source files are retained; excluded checks must not be offered or executed by the application."
+  ]
+}

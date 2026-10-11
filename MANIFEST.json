@@ -1,0 +1,114 @@
+{
+  "name": "wscan-library",
+  "version": "1.0.0",
+  "description": "Nuclei templates + Nmap NSE scripts + categories index for wscan",
+  "generated_categories": "categories.json",
+  "sources": {
+    "nuclei-templates": {
+      "upstream": "https://github.com/projectdiscovery/nuclei-templates",
+      "snapshot": "cc3313f0ca0e70904ac8a97097460d4281c787a9"
+    },
+    "nmap": {
+      "upstream": "https://nmap.org/",
+      "snapshot": "Nmap 7.991"
+    },
+    "msf-scanner": {
+      "upstream": "https://github.com/rapid7/metasploit-framework",
+      "scope": "auxiliary/scanner Tcp/Udp constant-probe subset only",
+      "codegen": "tools/gen_msf_scanner.py",
+      "refresh": "tools/refresh_msf_scanner.sh",
+      "output": "nuclei-templates/custom/msf-scanner/",
+      "note": "HTTP/SMB MSF scanners are not codegen'd — covered by nuclei + NSE"
+    },
+    "vendor-cve-version-checks": {
+      "reviewed_at": "2026-10-05",
+      "data": "security/vendor-cves.json",
+      "generator": "tools/gen_vendor_cves.py",
+      "coverage": "security/vendor-cves.md",
+      "detection": "HTTP GET, potential version match only",
+      "counts": {
+        "mikrotik": 22,
+        "gitlab": 38,
+        "manual": 4
+      },
+      "protocol_audit": "security/mikrotik-protocol-checks.md"
+    },
+    "kyocera-check": {
+      "upstream": "https://github.com/ushst/getKyoceraCreds",
+      "source_checkout": "reference-tools/getKyoceraCreds (workspace only)",
+      "template": "http/exposures/kyocera-netviewer-address-book-interface.yaml",
+      "mode": "GET WSDL only; no export or credential extraction"
+    },
+    "bitrix-path-disclosure-fix": {
+      "reviewed_at": "2026-10-05",
+      "template": "nuclei-templates/custom/bitrix/Bitrix_Full_Path_Disclosure.yaml",
+      "note": "Require PHP diagnostic with absolute Bitrix PHP path and line number; generic error text no longer matches."
+    },
+    "winrm-network-audit": {
+      "reviewed_at": "2026-10-05",
+      "templates": "nuclei-templates/custom/winrm/",
+      "coverage": "security/winrm-checks.md",
+      "method": "Unauthenticated POST /wsman; HTTP challenge advertisement only",
+      "count": 3,
+      "verification": "Offline index generation and application build; no target execution"
+    },
+    "database-access-audit": {
+      "reviewed_at": "2026-10-06",
+      "coverage": "security/database-access-checks.md",
+      "native": "PostgreSQL/MySQL/MSSQL/Redis credentials, sequential NSE driver adapter for MongoDB/Cassandra/Informix/Oracle",
+      "templates": "nuclei-templates/custom/database-audit/",
+      "verification": "Local mock protocol servers and offline index generation; no real targets"
+    }
+  },
+  "layout": {
+    "nuclei-templates": "Nuclei YAML checks",
+    "nmap/scripts": "NSE scripts",
+    "nmap/nselib": "NSE Lua libraries",
+    "categories.json": "Service/type/impact index for external-target checks",
+    "tools/gen_categories.py": "Regenerate categories.json",
+    "tools/gen_msf_scanner.py": "MSF scanner → tcp YAML codegen",
+    "tools/refresh_msf_scanner.sh": "Regen msf-scanner + categories when MSF is present",
+    "products.json": "Products, service constraints, requirements, evidence and complete source inventory",
+    "tools/gen_products.py": "Regenerate product index and coverage report",
+    "security/product-rules.json": "Reviewed aliases, bindings and category overrides"
+  },
+  "generated_products": "products.json",
+  "product_index": {
+    "schema_version": 1,
+    "generator": "tools/gen_products.py",
+    "rules": "security/product-rules.json",
+    "report": "security/product-index-report.md",
+    "issues": "security/product-index-issues.json",
+    "integration": "security/product-index-integration.md",
+    "dependencies": [
+      "Python >=3.9",
+      "PyYAML >=6,<7"
+    ],
+    "engine_support": "unknown; application capability checks required",
+    "mode": "offline inventory; no targets scanned",
+    "dependency_lock": "tools/requirements-products.txt"
+  },
+  "catalog_scope": {
+    "mode": "external-target-scanner",
+    "policy": "security/catalog-scope.json",
+    "implementation": "tools/catalog_scope.py",
+    "excluded_sources": "retained in source tree and products.inventory; not executable catalogue entries",
+    "application_requirement": "Only execute selected catalogue entries; never recursively run source directories"
+  },
+  "application_integration": {
+    "reviewed_at": "2026-10-05",
+    "report": "security/external-audit-implementation.md",
+    "evidence": "security/external-audit-implementation.json",
+    "app_root": "..",
+    "features": [
+      "MSSQL TDS PRELOGIN / SQL and Windows NTLM authentication",
+      "persistent MSSQL SQL console and fixed read-only audits",
+      "NSE InitScript declarations and selected-service scope",
+      "read-only SMB guest/null/credential browser and masked config search",
+      "bounded Web LFI / virtual host check",
+      "categories allowlist during catalog load/list"
+    ],
+    "verification": "Go build and offline index generation only; no tests or target execution",
+    "engine_support": "per-method implementation described in report; native NSE target compatibility unverified"
+  }
+}

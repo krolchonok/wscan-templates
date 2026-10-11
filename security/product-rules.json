@@ -1,0 +1,1902 @@
+{
+  "schema_version": 1,
+  "products": [
+    {
+      "key": "mikrotik/routeros",
+      "vendor": "mikrotik",
+      "product": "routeros",
+      "aliases": [
+        "RouterOS",
+        "Router OS"
+      ],
+      "entity_type": "operating_system",
+      "family": null,
+      "component": null
+    },
+    {
+      "key": "mikrotik/swos",
+      "vendor": "mikrotik",
+      "product": "swos",
+      "aliases": [
+        "SwOS"
+      ],
+      "entity_type": "operating_system",
+      "family": null,
+      "component": null
+    },
+    {
+      "key": "gitlab/gitlab",
+      "vendor": "gitlab",
+      "product": "gitlab",
+      "aliases": [
+        "GitLab",
+        "gitlab-ce",
+        "gitlab-ee"
+      ],
+      "entity_type": "product",
+      "family": "GitLab",
+      "component": null
+    },
+    {
+      "key": "gitlab/ai-gateway",
+      "vendor": "gitlab",
+      "product": "ai-gateway",
+      "aliases": [
+        "gitlab-ai-gateway"
+      ],
+      "entity_type": "component",
+      "family": "GitLab",
+      "component": "AI Gateway"
+    },
+    {
+      "key": "gitlab/runner",
+      "vendor": "gitlab",
+      "product": "runner",
+      "aliases": [
+        "gitlab-runner"
+      ],
+      "entity_type": "component",
+      "family": "GitLab",
+      "component": "Runner"
+    },
+    {
+      "key": "kyocera/net-viewer",
+      "vendor": "kyocera",
+      "product": "net-viewer",
+      "aliases": [
+        "net_viewer",
+        "Net Viewer",
+        "Net View"
+      ],
+      "entity_type": "product",
+      "family": null,
+      "component": "address_book SOAP"
+    },
+    {
+      "key": "microsoft/windows",
+      "vendor": "microsoft",
+      "product": "windows",
+      "aliases": [
+        "Windows"
+      ],
+      "entity_type": "operating_system",
+      "family": null,
+      "component": null
+    },
+    {
+      "key": "microsoft/active-directory-domain-services",
+      "vendor": "microsoft",
+      "product": "active-directory-domain-services",
+      "aliases": [
+        "AD DS"
+      ],
+      "entity_type": "role",
+      "family": "Windows",
+      "component": "domain controller"
+    },
+    {
+      "key": "microsoft/winrm",
+      "vendor": "microsoft",
+      "product": "winrm",
+      "aliases": [
+        "Windows Remote Management"
+      ],
+      "entity_type": "component",
+      "family": "Windows",
+      "component": "WinRM"
+    },
+    {
+      "key": "openbsd/openssh",
+      "vendor": "openbsd",
+      "product": "openssh",
+      "aliases": [
+        "OpenSSH"
+      ],
+      "entity_type": "product",
+      "family": null,
+      "component": null
+    },
+    {
+      "key": "samba/samba",
+      "vendor": "samba",
+      "product": "samba",
+      "aliases": [
+        "Samba"
+      ],
+      "entity_type": "product",
+      "family": null,
+      "component": null
+    },
+    {
+      "key": "sambar/sambar-server",
+      "vendor": "sambar",
+      "product": "sambar-server",
+      "aliases": [
+        "sambar"
+      ],
+      "entity_type": "product",
+      "family": null,
+      "component": null
+    },
+    {
+      "key": "mikrotik/mikrotik",
+      "vendor": "mikrotik",
+      "product": "mikrotik",
+      "aliases": [],
+      "entity_type": "family",
+      "family": "MikroTik devices",
+      "component": null
+    },
+    {
+      "key": "microsoft/sql-server",
+      "vendor": "microsoft",
+      "product": "sql-server",
+      "aliases": [
+        "MSSQL",
+        "ms-sql",
+        "Microsoft SQL Server",
+        "sqlserver"
+      ],
+      "entity_type": "product",
+      "family": null,
+      "component": "Database Engine / TDS"
+    }
+  ],
+  "overrides": [
+    {
+      "id": "mikrotik-winbox-differential",
+      "reason": "CVE-2024-54772 NSE: три пары candidate/control, без словаря и паролей; прямой oracle, попытки аутентификации. Исправлено brute → vuln,auth и активное воздействие.",
+      "paths": [
+        "nmap/scripts/mikrotik-routeros-cve-2024-54772.nse"
+      ],
+      "products": [
+        "mikrotik/routeros"
+      ],
+      "entry": {
+        "protocols": [
+          "winbox"
+        ],
+        "protocol_confidence": "curated",
+        "request_ports": {
+          "mode": "selected_service",
+          "values": null,
+          "typical": [
+            8291
+          ]
+        },
+        "target": {
+          "scope": "selected_service_candidate",
+          "fixed_endpoint_review": false
+        },
+        "recommendation": "service_candidate",
+        "evidence": {
+          "kind": "direct",
+          "confidence": "curated",
+          "basis": [
+            "Three candidate/control pairs, full WinBox frames; 51 vs 35 bytes; other outcomes UNKNOWN"
+          ]
+        },
+        "impact": {
+          "flags": {
+            "brute_force": false,
+            "exploit": false,
+            "state_change": false,
+            "dos": false,
+            "external_interaction": false,
+            "authentication_attempts": true
+          }
+        },
+        "requirements": {
+          "account": "not_required_for_probe",
+          "components": "WinBox; supplied candidate username must exist for positive result",
+          "user_interaction": false,
+          "version": null,
+          "script_arguments": [
+            "mikrotik-routeros-cve-2024-54772.username: candidate username, default admin; 1-32 ASCII letters/digits/_.-"
+          ]
+        },
+        "affected_service": {
+          "protocols": [
+            "winbox"
+          ],
+          "ports": null,
+          "description": "Selected WinBox service, typically TCP 8291",
+          "scope": "selected_service",
+          "typical_ports": [
+            8291
+          ]
+        }
+      },
+      "category": {
+        "types": [
+          "Уязвимости",
+          "Аутентификация"
+        ],
+        "nse_categories": [
+          "vuln",
+          "auth"
+        ],
+        "impact": "Активные проверки"
+      }
+    },
+    {
+      "id": "mikrotik-winbox-dictionary",
+      "reason": "username-brute читает словарь и делает запрос для каждого имени; остаётся только в подборе, сильное воздействие.",
+      "paths": [
+        "nmap/scripts/mikrotik-routeros-username-brute.nse"
+      ],
+      "products": [
+        "mikrotik/routeros"
+      ],
+      "entry": {
+        "protocols": [
+          "winbox"
+        ],
+        "protocol_confidence": "curated",
+        "request_ports": {
+          "mode": "selected_service",
+          "values": null,
+          "typical": [
+            8291
+          ]
+        },
+        "target": {
+          "scope": "selected_service_candidate",
+          "fixed_endpoint_review": false
+        },
+        "recommendation": "service_candidate",
+        "impact": {
+          "flags": {
+            "brute_force": true,
+            "exploit": false,
+            "state_change": false,
+            "dos": false,
+            "external_interaction": false,
+            "authentication_attempts": true
+          }
+        },
+        "requirements": {
+          "account": "not_required_for_probe",
+          "components": "WinBox; username wordlist argument required"
+        },
+        "evidence": {
+          "kind": "direct",
+          "confidence": "curated",
+          "basis": [
+            "Dictionary iteration and response-size username oracle"
+          ]
+        },
+        "affected_service": {
+          "protocols": [
+            "winbox"
+          ],
+          "ports": null,
+          "typical_ports": [
+            8291
+          ],
+          "scope": "selected_service"
+        }
+      },
+      "category": {
+        "types": [
+          "Подбор учётных данных"
+        ],
+        "impact": "Сильное воздействие"
+      }
+    },
+    {
+      "id": "vendor-version-impact",
+      "reason": "Сгенерированные vendor-version шаблоны делают GET и сравнение версии; обнаружение потенциального риска, а не активное подтверждение CVE.",
+      "path_regex": "nuclei-templates/http/cves/[0-9]{4}/CVE-[0-9]{4}-[0-9]+-gitlab-version\\.yaml",
+      "category": {
+        "impact": "Обнаружение"
+      },
+      "entry": {
+        "affected_service": {
+          "protocols": [
+            "http"
+          ],
+          "typical_ports": [
+            80,
+            443,
+            8080,
+            8443
+          ],
+          "scope": "configured_service"
+        }
+      }
+    },
+    {
+      "id": "kyocera-wsdl",
+      "reason": "GET выбранного HTTP(S) WSDL, namespace и операции; доступный интерфейс, не подтверждение CVE. Канонизированы net_viewer/net-viewer.",
+      "paths": [
+        "nuclei-templates/http/exposures/kyocera-netviewer-address-book-interface.yaml"
+      ],
+      "products": [
+        "kyocera/net-viewer"
+      ],
+      "entry": {
+        "protocols": [
+          "http"
+        ],
+        "protocol_confidence": "curated",
+        "request_ports": {
+          "mode": "selected_service",
+          "values": null,
+          "typical": [
+            9091
+          ]
+        },
+        "target": {
+          "scope": "selected_service_candidate",
+          "fixed_endpoint_review": false
+        },
+        "recommendation": "service_candidate",
+        "evidence": {
+          "kind": "interface",
+          "confidence": "curated",
+          "basis": [
+            "GET WSDL; Kyocera namespace, definitions, two operation names; no export"
+          ]
+        },
+        "impact": {
+          "flags": {
+            "brute_force": false,
+            "exploit": false,
+            "state_change": false,
+            "dos": false,
+            "external_interaction": false,
+            "authentication_attempts": false
+          }
+        },
+        "requirements": {
+          "account": "not_required_for_probe",
+          "components": "Kyocera address_book WSDL",
+          "user_interaction": false
+        },
+        "affected_service": {
+          "protocols": [
+            "http"
+          ],
+          "ports": null,
+          "typical_ports": [
+            9091
+          ],
+          "scope": "selected_service",
+          "description": "Kyocera address_book SOAP on selected HTTP(S) service, typically HTTPS 9091"
+        },
+        "vulnerability_requirements": {
+          "components": "address_book export operation; accessible WSDL does not establish whether export requires authentication",
+          "user_interaction": false
+        }
+      },
+      "category": {
+        "impact": "Обнаружение"
+      }
+    },
+    {
+      "id": "kyocera-export",
+      "reason": "CVE-2022-1026 SOAP POST создаёт экспорт: exploit и state_change=true, сильное воздействие; matcher SOAP/200 не доказывает успешный экспорт.",
+      "paths": [
+        "nuclei-templates/http/cves/2022/CVE-2022-1026.yaml"
+      ],
+      "products": [
+        "kyocera/net-viewer"
+      ],
+      "entry": {
+        "protocols": [
+          "http"
+        ],
+        "protocol_confidence": "curated",
+        "request_ports": {
+          "mode": "selected_service",
+          "values": null,
+          "typical": [
+            9091
+          ]
+        },
+        "target": {
+          "scope": "selected_service_candidate",
+          "fixed_endpoint_review": false
+        },
+        "recommendation": "explicit_exploit_selection",
+        "impact": {
+          "flags": {
+            "brute_force": false,
+            "exploit": true,
+            "state_change": true,
+            "dos": false,
+            "external_interaction": false,
+            "authentication_attempts": false
+          }
+        },
+        "evidence": {
+          "kind": "interface",
+          "confidence": "curated",
+          "basis": [
+            "SOAP POST create_personal_address_enumeration; response confirms SOAP response, not necessarily completed export"
+          ]
+        },
+        "requirements": {
+          "account": "not_required_for_probe",
+          "components": "address_book export SOAP operation",
+          "user_interaction": false
+        },
+        "affected_service": {
+          "protocols": [
+            "http"
+          ],
+          "ports": null,
+          "typical_ports": [
+            9091
+          ],
+          "scope": "selected_service",
+          "description": "Kyocera address_book SOAP on selected HTTP(S) service, typically HTTPS 9091"
+        },
+        "vulnerability_requirements": {
+          "components": "address_book export operation; accessible WSDL does not establish whether export requires authentication",
+          "user_interaction": false
+        }
+      },
+      "category": {
+        "impact": "Сильное воздействие"
+      }
+    },
+    {
+      "id": "mikrotik-ssh-banner",
+      "reason": "ROSSSH fingerprint относится к RouterOS SSH; не разрешает WinBox/API/WebFig на SSH. Исходный port:22 требует сверки с выбранным сервисом.",
+      "paths": [
+        "nuclei-templates/network/detection/mikrotik-ssh-detect.yaml"
+      ],
+      "products": [
+        "mikrotik/routeros"
+      ],
+      "entry": {
+        "protocols": [
+          "ssh"
+        ],
+        "protocol_confidence": "curated",
+        "request_ports": {
+          "mode": "source_literal",
+          "values": [
+            22
+          ],
+          "typical": [
+            22
+          ]
+        },
+        "target": {
+          "fixed_endpoint_review": true
+        },
+        "recommendation": "service_candidate",
+        "evidence": {
+          "kind": "interface",
+          "confidence": "curated",
+          "basis": [
+            "SSH-2.0-ROSSSH banner matcher"
+          ]
+        },
+        "impact": {
+          "flags": {
+            "brute_force": false,
+            "exploit": false,
+            "state_change": false,
+            "dos": false,
+            "external_interaction": false,
+            "authentication_attempts": false
+          }
+        },
+        "requirements": {
+          "account": "not_required_for_probe"
+        }
+      }
+    },
+    {
+      "id": "mikrotik-api",
+      "reason": "Бинарный API probe, не HTTP REST; ответ not logged in обнаруживает интерфейс, не CVE. Фиксированный 8728 требует контроля порта.",
+      "paths": [
+        "nuclei-templates/network/detection/mikrotik-routeros-api.yaml"
+      ],
+      "products": [
+        "mikrotik/routeros"
+      ],
+      "entry": {
+        "protocols": [
+          "routeros-api"
+        ],
+        "protocol_confidence": "curated",
+        "request_ports": {
+          "mode": "source_literal",
+          "values": [
+            8728
+          ],
+          "typical": [
+            8728
+          ]
+        },
+        "target": {
+          "fixed_endpoint_review": true
+        },
+        "recommendation": "service_candidate",
+        "evidence": {
+          "kind": "interface",
+          "confidence": "curated",
+          "basis": [
+            "API binary probe and !fatal not logged in frame"
+          ]
+        },
+        "requirements": {
+          "account": "not_required_for_probe"
+        }
+      }
+    },
+    {
+      "id": "mikrotik-webfig",
+      "reason": "HTTP интерфейс RouterOS; upstream AND требует одновременно old-router/Hotspot/proxy признаки и может пропускать обычный WebFig. Не подтверждает доступность других компонентов.",
+      "paths": [
+        "nuclei-templates/http/exposed-panels/mikrotik/mikrotik-routeros.yaml"
+      ],
+      "products": [
+        "mikrotik/routeros"
+      ],
+      "entry": {
+        "protocols": [
+          "http"
+        ],
+        "protocol_confidence": "curated",
+        "request_ports": {
+          "mode": "selected_service",
+          "values": null,
+          "typical": null
+        },
+        "target": {
+          "scope": "selected_service_candidate",
+          "fixed_endpoint_review": false
+        },
+        "recommendation": "service_candidate",
+        "evidence": {
+          "kind": "interface",
+          "confidence": "curated",
+          "basis": [
+            "GET BaseURL; multiple AND matchers: MikroTik text, old router title, Hotspot text, httpproxy header; restrictive upstream combination may miss WebFig"
+          ]
+        },
+        "requirements": {
+          "account": "not_required_for_probe"
+        }
+      }
+    },
+    {
+      "id": "gitlab-login-panel",
+      "reason": "GitLab login panel GET; относится к GitLab CE/EE, не AI Gateway и не SSH. Редиректы требуют контроля выбранного сервиса.",
+      "paths": [
+        "nuclei-templates/http/exposed-panels/gitlab-detect.yaml"
+      ],
+      "products": [
+        "gitlab/gitlab"
+      ],
+      "entry": {
+        "protocols": [
+          "http"
+        ],
+        "protocol_confidence": "curated",
+        "request_ports": {
+          "mode": "selected_service",
+          "values": null,
+          "typical": null
+        },
+        "target": {
+          "fixed_endpoint_review": null
+        },
+        "recommendation": "service_candidate",
+        "evidence": {
+          "kind": "interface",
+          "confidence": "curated",
+          "basis": [
+            "GET users/sign_in; GitLab and about.gitlab.com plus HTTP 200"
+          ]
+        },
+        "impact": {
+          "flags": {
+            "brute_force": false,
+            "exploit": false,
+            "state_change": false,
+            "dos": false,
+            "external_interaction": false,
+            "authentication_attempts": false
+          }
+        },
+        "requirements": {
+          "account": "not_required_for_probe",
+          "components": "GitLab CE/EE login panel",
+          "user_interaction": false
+        }
+      }
+    },
+    {
+      "id": "windows-winrm",
+      "reason": "HTTP /wsman и auth headers — предположение WinRM, не доказательство DC; типичные 5985/5986 не ограничивают выбранный HTTP порт.",
+      "paths": [
+        "nuclei-templates/http/technologies/winrm-detect.yaml"
+      ],
+      "products": [
+        "microsoft/winrm"
+      ],
+      "entry": {
+        "protocols": [
+          "http"
+        ],
+        "protocol_confidence": "curated",
+        "request_ports": {
+          "mode": "selected_service",
+          "values": null,
+          "typical": [
+            5985,
+            5986
+          ]
+        },
+        "target": {
+          "scope": "selected_service_candidate",
+          "fixed_endpoint_review": false,
+          "required_application_protocol": "winrm"
+        },
+        "recommendation": "review_required",
+        "evidence": {
+          "kind": "interface",
+          "confidence": "curated",
+          "basis": [
+            "POST /wsman, 401, Microsoft-HTTPAPI, NTLM/Negotiate headers; suggestive, not unique"
+          ]
+        },
+        "requirements": {
+          "account": "not_required_for_probe"
+        }
+      }
+    },
+    {
+      "id": "windows-ms17-010",
+      "reason": "smb-vuln-ms17-010 отправляет SMB транзакцию и анализирует STATUS_INSUFF_SERVER_RESOURCES; Windows SMB, не доказательство DC; hostrule выбирает порт через smb library.",
+      "paths": [
+        "nmap/scripts/smb-vuln-ms17-010.nse"
+      ],
+      "products": [
+        "microsoft/windows"
+      ],
+      "entry": {
+        "protocols": [
+          "smb"
+        ],
+        "protocol_confidence": "curated",
+        "evidence": {
+          "kind": "direct",
+          "confidence": "curated",
+          "basis": [
+            "SMB IPC$ transaction error signature"
+          ]
+        },
+        "target": {
+          "scope": "host_or_global"
+        },
+        "recommendation": "review_required"
+      }
+    },
+    {
+      "id": "krb5-enum-users-dictionary",
+      "reason": "unpwdb.usernames(), цикл по словарю и AS-REQ; нужны REALM и отдельный выбор подбора. Исправлена категория auth/intrusive → только brute.",
+      "paths": [
+        "nmap/scripts/krb5-enum-users.nse"
+      ],
+      "products": [],
+      "entry": {
+        "protocols": [
+          "kerberos"
+        ],
+        "protocol_confidence": "curated",
+        "impact": {
+          "flags": {
+            "brute_force": true,
+            "authentication_attempts": true
+          }
+        },
+        "requirements": {
+          "components": "Kerberos REALM",
+          "account": "not_required_for_probe"
+        },
+        "request_ports": {
+          "mode": "selected_service",
+          "values": null,
+          "typical": [
+            88
+          ]
+        },
+        "evidence": {
+          "kind": "configuration",
+          "confidence": "curated",
+          "basis": [
+            "Kerberos AS-REQ; PREAUTH_REQUIRED or AS-REP for candidate from dictionary; realm must be valid"
+          ]
+        }
+      },
+      "category": {
+        "types": [
+          "Подбор учётных данных"
+        ],
+        "impact": "Сильное воздействие",
+        "nse_categories": [
+          "brute"
+        ]
+      }
+    },
+    {
+      "id": "smtp-enum-users-dictionary",
+      "reason": "unpwdb.usernames() и цикл SMTP VRFY/EXPN/RCPT по именам; словарный подбор, только brute.",
+      "paths": [
+        "nmap/scripts/smtp-enum-users.nse"
+      ],
+      "products": [],
+      "entry": {
+        "protocols": [
+          "smtp"
+        ],
+        "protocol_confidence": "curated",
+        "impact": {
+          "flags": {
+            "brute_force": true
+          }
+        },
+        "requirements": {
+          "components": null
+        }
+      },
+      "category": {
+        "types": [
+          "Подбор учётных данных"
+        ],
+        "impact": "Сильное воздействие",
+        "nse_categories": [
+          "brute"
+        ]
+      }
+    },
+    {
+      "id": "http-userdir-enum-dictionary",
+      "reason": "datafiles usernames.lst, цикл HEAD/GET /~username; словарь логинов, только brute.",
+      "paths": [
+        "nmap/scripts/http-userdir-enum.nse"
+      ],
+      "products": [],
+      "entry": {
+        "protocols": [
+          "http"
+        ],
+        "protocol_confidence": "curated",
+        "impact": {
+          "flags": {
+            "brute_force": true
+          }
+        },
+        "requirements": {
+          "components": null
+        }
+      },
+      "category": {
+        "types": [
+          "Подбор учётных данных"
+        ],
+        "impact": "Сильное воздействие",
+        "nse_categories": [
+          "brute"
+        ]
+      }
+    },
+    {
+      "id": "generic-protocol-checks",
+      "reason": "SMB/LDAP/RDP/TLS/SSH/HTTP общие проверки не получают выдуманный продукт; Windows fingerprint не доказывает DC, LDAP не означает AD.",
+      "paths": [
+        "nmap/scripts/smb-os-discovery.nse",
+        "nmap/scripts/ldap-rootdse.nse",
+        "nmap/scripts/ldap-search.nse",
+        "nmap/scripts/rdp-enum-encryption.nse",
+        "nmap/scripts/ssl-cert.nse",
+        "nmap/scripts/ssh-auth-methods.nse",
+        "nmap/scripts/http-title.nse",
+        "nmap/scripts/krb5-enum-users.nse",
+        "nmap/scripts/smtp-enum-users.nse",
+        "nmap/scripts/http-userdir-enum.nse",
+        "nuclei-templates/custom/msf-scanner/msf-ssh-ssh-version.yaml",
+        "nuclei-templates/custom/msf-scanner/msf-smb-smb-version.yaml"
+      ],
+      "products": [],
+      "entry": {
+        "target": {
+          "product_required": false
+        },
+        "recommendation": "review_required"
+      }
+    },
+    {
+      "id": "mikrotik-version-impact",
+      "path_regex": "nuclei-templates/http/cves/[0-9]{4}/CVE-[0-9]{4}-[0-9]+-mikrotik-version\\.yaml",
+      "reason": "RouterOS GET version checks: потенциально по версии; обнаружение, не прямое подтверждение и не запуск затронутого протокола.",
+      "category": {
+        "impact": "Обнаружение"
+      }
+    },
+    {
+      "id": "CVE-2024-54772-affected-service",
+      "paths": [
+        "nuclei-templates/http/cves/2024/CVE-2024-54772-mikrotik-version.yaml"
+      ],
+      "reason": "CVE-2024-54772: протокол и типичные затронутые порты из локального security/vendor-cves.json; входящий HTTP GET остаётся отдельным. Типичные порты не ограничивают выбор цели.",
+      "entry": {
+        "affected_service": {
+          "protocols": [
+            "winbox"
+          ],
+          "typical_ports": [
+            8291
+          ],
+          "scope": "configured_service"
+        },
+        "requirements": {
+          "user_interaction": false
+        }
+      }
+    },
+    {
+      "id": "CVE-2024-54952-affected-service",
+      "paths": [
+        "nuclei-templates/http/cves/2024/CVE-2024-54952-mikrotik-version.yaml"
+      ],
+      "reason": "CVE-2024-54952: протокол и типичные затронутые порты из локального security/vendor-cves.json; входящий HTTP GET остаётся отдельным. Типичные порты не ограничивают выбор цели.",
+      "entry": {
+        "affected_service": {
+          "protocols": [
+            "smb"
+          ],
+          "typical_ports": [
+            445
+          ],
+          "scope": "configured_service"
+        },
+        "requirements": {
+          "user_interaction": false
+        }
+      }
+    },
+    {
+      "id": "CVE-2025-6443-affected-service",
+      "paths": [
+        "nuclei-templates/http/cves/2025/CVE-2025-6443-mikrotik-version.yaml"
+      ],
+      "reason": "CVE-2025-6443: протокол и типичные затронутые порты из локального security/vendor-cves.json; входящий HTTP GET остаётся отдельным. Типичные порты не ограничивают выбор цели.",
+      "entry": {
+        "affected_service": {
+          "protocols": [
+            "vxlan"
+          ],
+          "typical_ports": [
+            4789
+          ],
+          "scope": "configured_service"
+        },
+        "requirements": {
+          "user_interaction": false
+        }
+      }
+    },
+    {
+      "id": "CVE-2023-47310-affected-service",
+      "paths": [
+        "nuclei-templates/http/cves/2023/CVE-2023-47310-mikrotik-version.yaml"
+      ],
+      "reason": "CVE-2023-47310: протокол и типичные затронутые порты из локального security/vendor-cves.json; входящий HTTP GET остаётся отдельным. Типичные порты не ограничивают выбор цели.",
+      "entry": {
+        "affected_service": {
+          "protocols": [
+            "ipv6-udp-traceroute"
+          ],
+          "typical_ports": null,
+          "scope": "forwarded_traffic"
+        },
+        "requirements": {
+          "user_interaction": false
+        }
+      }
+    },
+    {
+      "id": "CVE-2025-6563-affected-service",
+      "paths": [
+        "nuclei-templates/http/cves/2025/CVE-2025-6563-mikrotik-version.yaml"
+      ],
+      "reason": "CVE-2025-6563: протокол и типичные затронутые порты из локального security/vendor-cves.json; входящий HTTP GET остаётся отдельным. Типичные порты не ограничивают выбор цели.",
+      "entry": {
+        "affected_service": {
+          "protocols": [
+            "http"
+          ],
+          "typical_ports": [
+            80,
+            443
+          ],
+          "scope": "hotspot"
+        },
+        "requirements": {
+          "user_interaction": false
+        },
+        "vulnerability_requirements": {
+          "user_interaction": true,
+          "components": "Hotspot"
+        }
+      }
+    },
+    {
+      "id": "CVE-2025-10948-affected-service",
+      "paths": [
+        "nuclei-templates/http/cves/2025/CVE-2025-10948-mikrotik-version.yaml"
+      ],
+      "reason": "CVE-2025-10948: протокол и типичные затронутые порты из локального security/vendor-cves.json; входящий HTTP GET остаётся отдельным. Типичные порты не ограничивают выбор цели.",
+      "entry": {
+        "affected_service": {
+          "protocols": [
+            "http"
+          ],
+          "typical_ports": [
+            80,
+            443
+          ],
+          "scope": "rest-api"
+        },
+        "requirements": {
+          "user_interaction": false
+        }
+      }
+    },
+    {
+      "id": "CVE-2025-61481-affected-service",
+      "paths": [
+        "nuclei-templates/http/cves/2025/CVE-2025-61481-mikrotik-version.yaml"
+      ],
+      "reason": "CVE-2025-61481: протокол и типичные затронутые порты из локального security/vendor-cves.json; входящий HTTP GET остаётся отдельным. Типичные порты не ограничивают выбор цели.",
+      "entry": {
+        "affected_service": {
+          "protocols": [
+            "http"
+          ],
+          "typical_ports": [
+            80
+          ],
+          "scope": "webfig-http-only"
+        },
+        "requirements": {
+          "user_interaction": false,
+          "components": "HTTP WebFig, URL without TLS; source DSL requires http://"
+        }
+      }
+    },
+    {
+      "id": "CVE-2026-7668-affected-service",
+      "paths": [
+        "nuclei-templates/http/cves/2026/CVE-2026-7668-mikrotik-version.yaml"
+      ],
+      "reason": "CVE-2026-7668: протокол и типичные затронутые порты из локального security/vendor-cves.json; входящий HTTP GET остаётся отдельным. Типичные порты не ограничивают выбор цели.",
+      "entry": {
+        "affected_service": {
+          "protocols": [
+            "http"
+          ],
+          "typical_ports": [
+            80,
+            443
+          ],
+          "scope": "scep"
+        },
+        "requirements": {
+          "user_interaction": false
+        }
+      }
+    },
+    {
+      "id": "CVE-2026-39042-affected-service",
+      "paths": [
+        "nuclei-templates/http/cves/2026/CVE-2026-39042-mikrotik-version.yaml"
+      ],
+      "reason": "CVE-2026-39042: протокол и типичные затронутые порты из локального security/vendor-cves.json; входящий HTTP GET остаётся отдельным. Типичные порты не ограничивают выбор цели.",
+      "entry": {
+        "affected_service": {
+          "protocols": null,
+          "typical_ports": null,
+          "scope": "management-ipc-no-dedicated-port"
+        },
+        "requirements": {
+          "user_interaction": false
+        }
+      }
+    },
+    {
+      "id": "CVE-2026-67276-affected-service",
+      "paths": [
+        "nuclei-templates/http/cves/2026/CVE-2026-67276-mikrotik-version.yaml"
+      ],
+      "reason": "CVE-2026-67276: протокол и типичные затронутые порты из локального security/vendor-cves.json; входящий HTTP GET остаётся отдельным. Типичные порты не ограничивают выбор цели.",
+      "entry": {
+        "affected_service": {
+          "protocols": [
+            "ssh"
+          ],
+          "typical_ports": [
+            22
+          ],
+          "scope": "configured_service"
+        },
+        "requirements": {
+          "user_interaction": false
+        }
+      }
+    },
+    {
+      "id": "CVE-2026-67277-affected-service",
+      "paths": [
+        "nuclei-templates/http/cves/2026/CVE-2026-67277-mikrotik-version.yaml"
+      ],
+      "reason": "CVE-2026-67277: протокол и типичные затронутые порты из локального security/vendor-cves.json; входящий HTTP GET остаётся отдельным. Типичные порты не ограничивают выбор цели.",
+      "entry": {
+        "affected_service": {
+          "protocols": [
+            "bandwidth-test"
+          ],
+          "typical_ports": [
+            2000
+          ],
+          "scope": "configured_service"
+        },
+        "requirements": {
+          "user_interaction": false
+        }
+      }
+    },
+    {
+      "id": "CVE-2026-67278-affected-service",
+      "paths": [
+        "nuclei-templates/http/cves/2026/CVE-2026-67278-mikrotik-version.yaml"
+      ],
+      "reason": "CVE-2026-67278: протокол и типичные затронутые порты из локального security/vendor-cves.json; входящий HTTP GET остаётся отдельным. Типичные порты не ограничивают выбор цели.",
+      "entry": {
+        "affected_service": {
+          "protocols": [
+            "tls",
+            "ssh"
+          ],
+          "typical_ports": null,
+          "scope": "outbound_connections"
+        },
+        "requirements": {
+          "user_interaction": false
+        }
+      }
+    },
+    {
+      "id": "CVE-2026-67279-affected-service",
+      "paths": [
+        "nuclei-templates/http/cves/2026/CVE-2026-67279-mikrotik-version.yaml"
+      ],
+      "reason": "CVE-2026-67279: протокол и типичные затронутые порты из локального security/vendor-cves.json; входящий HTTP GET остаётся отдельным. Типичные порты не ограничивают выбор цели.",
+      "entry": {
+        "affected_service": {
+          "protocols": [
+            "ssh"
+          ],
+          "typical_ports": [
+            22
+          ],
+          "scope": "configured_service"
+        },
+        "requirements": {
+          "user_interaction": false
+        }
+      }
+    },
+    {
+      "id": "CVE-2026-67281-affected-service",
+      "paths": [
+        "nuclei-templates/http/cves/2026/CVE-2026-67281-mikrotik-version.yaml"
+      ],
+      "reason": "CVE-2026-67281: протокол и типичные затронутые порты из локального security/vendor-cves.json; входящий HTTP GET остаётся отдельным. Типичные порты не ограничивают выбор цели.",
+      "entry": {
+        "affected_service": {
+          "protocols": [
+            "http"
+          ],
+          "typical_ports": [
+            80,
+            443
+          ],
+          "scope": "webfig-jsproxy"
+        },
+        "requirements": {
+          "user_interaction": false
+        }
+      }
+    },
+    {
+      "id": "CVE-2026-86060-affected-service",
+      "paths": [
+        "nuclei-templates/http/cves/2026/CVE-2026-86060-mikrotik-version.yaml"
+      ],
+      "reason": "CVE-2026-86060: протокол и типичные затронутые порты из локального security/vendor-cves.json; входящий HTTP GET остаётся отдельным. Типичные порты не ограничивают выбор цели.",
+      "entry": {
+        "affected_service": {
+          "protocols": [
+            "ssh"
+          ],
+          "typical_ports": [
+            22
+          ],
+          "scope": "configured_service"
+        },
+        "requirements": {
+          "user_interaction": false
+        }
+      }
+    },
+    {
+      "id": "CVE-2026-89020-affected-service",
+      "paths": [
+        "nuclei-templates/http/cves/2026/CVE-2026-89020-mikrotik-version.yaml"
+      ],
+      "reason": "CVE-2026-89020: протокол и типичные затронутые порты из локального security/vendor-cves.json; входящий HTTP GET остаётся отдельным. Типичные порты не ограничивают выбор цели.",
+      "entry": {
+        "affected_service": {
+          "protocols": [
+            "tftp"
+          ],
+          "typical_ports": [
+            69
+          ],
+          "scope": "outbound_connections"
+        },
+        "requirements": {
+          "user_interaction": false
+        }
+      }
+    },
+    {
+      "id": "CVE-2026-89021-affected-service",
+      "paths": [
+        "nuclei-templates/http/cves/2026/CVE-2026-89021-mikrotik-version.yaml"
+      ],
+      "reason": "CVE-2026-89021: протокол и типичные затронутые порты из локального security/vendor-cves.json; входящий HTTP GET остаётся отдельным. Типичные порты не ограничивают выбор цели.",
+      "entry": {
+        "affected_service": {
+          "protocols": [
+            "ssh",
+            "routeros-api",
+            "http"
+          ],
+          "typical_ports": [
+            22,
+            8728,
+            8729,
+            80,
+            443
+          ],
+          "scope": "management-container-import"
+        },
+        "requirements": {
+          "user_interaction": false
+        }
+      }
+    },
+    {
+      "id": "CVE-2026-56719-affected-service",
+      "paths": [
+        "nuclei-templates/http/cves/2026/CVE-2026-56719-mikrotik-version.yaml"
+      ],
+      "reason": "CVE-2026-56719: протокол и типичные затронутые порты из локального security/vendor-cves.json; входящий HTTP GET остаётся отдельным. Типичные порты не ограничивают выбор цели.",
+      "entry": {
+        "affected_service": {
+          "protocols": [
+            "smb"
+          ],
+          "typical_ports": [
+            445
+          ],
+          "scope": "configured_service"
+        },
+        "requirements": {
+          "user_interaction": false
+        }
+      }
+    },
+    {
+      "id": "CVE-2026-89028-affected-service",
+      "paths": [
+        "nuclei-templates/http/cves/2026/CVE-2026-89028-mikrotik-version.yaml"
+      ],
+      "reason": "CVE-2026-89028: протокол и типичные затронутые порты из локального security/vendor-cves.json; входящий HTTP GET остаётся отдельным. Типичные порты не ограничивают выбор цели.",
+      "entry": {
+        "affected_service": {
+          "protocols": [
+            "smb"
+          ],
+          "typical_ports": [
+            445
+          ],
+          "scope": "configured_service"
+        },
+        "requirements": {
+          "user_interaction": false
+        }
+      }
+    },
+    {
+      "id": "CVE-2026-52346-affected-service",
+      "paths": [
+        "nuclei-templates/http/cves/2026/CVE-2026-52346-mikrotik-version.yaml"
+      ],
+      "reason": "CVE-2026-52346: протокол и типичные затронутые порты из локального security/vendor-cves.json; входящий HTTP GET остаётся отдельным. Типичные порты не ограничивают выбор цели.",
+      "entry": {
+        "affected_service": {
+          "protocols": [
+            "tls"
+          ],
+          "typical_ports": null,
+          "scope": "forwarded_traffic"
+        },
+        "requirements": {
+          "user_interaction": false
+        }
+      }
+    },
+    {
+      "id": "CVE-2026-93345-affected-service",
+      "paths": [
+        "nuclei-templates/http/cves/2026/CVE-2026-93345-mikrotik-version.yaml"
+      ],
+      "reason": "CVE-2026-93345: протокол и типичные затронутые порты из локального security/vendor-cves.json; входящий HTTP GET остаётся отдельным. Типичные порты не ограничивают выбор цели.",
+      "entry": {
+        "affected_service": {
+          "protocols": [
+            "bgp"
+          ],
+          "typical_ports": [
+            179
+          ],
+          "scope": "configured_service"
+        },
+        "requirements": {
+          "user_interaction": false
+        }
+      }
+    },
+    {
+      "id": "CVE-2024-27686-affected-service",
+      "paths": [
+        "nuclei-templates/http/cves/2024/CVE-2024-27686-mikrotik-version.yaml"
+      ],
+      "reason": "CVE-2024-27686: протокол и типичные затронутые порты из локального security/vendor-cves.json; входящий HTTP GET остаётся отдельным. Типичные порты не ограничивают выбор цели.",
+      "entry": {
+        "affected_service": {
+          "protocols": [
+            "smb"
+          ],
+          "typical_ports": [
+            445
+          ],
+          "scope": "configured_service"
+        },
+        "requirements": {
+          "user_interaction": false
+        }
+      }
+    },
+    {
+      "id": "mssql-core-tds-bindings",
+      "path_regex": "(?:nmap/scripts/ms-sql-(?!dac)[^/]+\\.nse|nuclei-templates/javascript/(?:detection/mssql-detect|default-logins/mssql-default-logins)\\.yaml)",
+      "products": [
+        "microsoft/sql-server"
+      ],
+      "reason": "MSSQL helper/TDS requests identify SQL Server Database Engine; Browser/HTTP interfaces are separate. Source reviewed; runtime untested.",
+      "category": {
+        "product": "microsoft/sql-server"
+      },
+      "entry": {
+        "protocols": [
+          "tds"
+        ],
+        "protocol_confidence": "curated",
+        "protocol_basis": [
+          "TDS requests through MSSQL helper/client"
+        ],
+        "request_ports": {
+          "mode": "selected_service",
+          "values": null,
+          "typical": [
+            1433
+          ]
+        },
+        "affected_service": {
+          "protocols": [
+            "tds"
+          ],
+          "ports": null,
+          "typical_ports": [
+            1433
+          ],
+          "scope": "selected_service"
+        },
+        "target": {
+          "scope": "selected_service",
+          "fixed_endpoint_review": "wscan binds JS Host/Port and restricts NSE network calls to selected endpoints"
+        }
+      }
+    },
+    {
+      "id": "mssql-hashdump-impact",
+      "paths": [
+        "nmap/scripts/ms-sql-dump-hashes.nse"
+      ],
+      "reason": "SELECT SQL login password hashes exposes credential material; upstream safe does not make this ordinary discovery. Requires explicit exploitation choice.",
+      "category": {
+        "impact": "Эксплуатация",
+        "types": [
+          "Эксплуатация / извлечение секретов"
+        ]
+      },
+      "entry": {
+        "impact": {
+          "flags": {
+            "exploit": true,
+            "state_change": false,
+            "brute_force": false,
+            "authentication_attempts": true
+          }
+        },
+        "requirements": {
+          "account": "required",
+          "privileges": "rights to read SQL login password hashes"
+        },
+        "evidence": {
+          "kind": "direct_confirmation",
+          "confidence": "curated",
+          "basis": [
+            "source SELECT password_hash"
+          ]
+        }
+      }
+    },
+    {
+      "id": "mssql-config-state-change",
+      "paths": [
+        "nmap/scripts/ms-sql-config.nse"
+      ],
+      "reason": "Script creates/inserts/drops a temporary SQL table; native audit reads sys.configurations directly instead.",
+      "category": {
+        "impact": "Эксплуатация",
+        "types": [
+          "Проверки с изменением состояния"
+        ]
+      },
+      "entry": {
+        "impact": {
+          "flags": {
+            "state_change": true,
+            "exploit": true,
+            "brute_force": false,
+            "authentication_attempts": true
+          }
+        },
+        "requirements": {
+          "account": "required"
+        }
+      }
+    },
+    {
+      "id": "mssql-arbitrary-query-impact",
+      "paths": [
+        "nmap/scripts/ms-sql-query.nse"
+      ],
+      "reason": "Default query reads version, but operator script argument permits arbitrary SQL, including state changes; execution is gated with AllowExploit.",
+      "category": {
+        "impact": "Эксплуатация",
+        "types": [
+          "Произвольный SQL"
+        ]
+      },
+      "entry": {
+        "impact": {
+          "flags": {
+            "exploit": true,
+            "state_change": null,
+            "brute_force": false,
+            "authentication_attempts": true
+          }
+        },
+        "requirements": {
+          "account": "required"
+        }
+      }
+    },
+    {
+      "id": "mssql-xp-cmdshell-impact",
+      "paths": [
+        "nmap/scripts/ms-sql-xp-cmdshell.nse"
+      ],
+      "reason": "Script executes an OS command via xp_cmdshell (default ipconfig /all); not a read-only configuration check.",
+      "category": {
+        "impact": "Эксплуатация",
+        "types": [
+          "Выполнение команд"
+        ]
+      },
+      "entry": {
+        "impact": {
+          "flags": {
+            "exploit": true,
+            "state_change": null,
+            "brute_force": false,
+            "authentication_attempts": true
+          }
+        },
+        "requirements": {
+          "account": "required",
+          "components": "enabled xp_cmdshell and sufficient execution rights"
+        }
+      }
+    },
+    {
+      "id": "mssql-browser-interface",
+      "paths": [
+        "nuclei-templates/javascript/udp/detection/mssql-browser-detect.yaml"
+      ],
+      "products": [
+        "microsoft/sql-server"
+      ],
+      "reason": "SQL Browser SSRP is UDP discovery; advertised instance ports are observations, not permission to connect to them.",
+      "entry": {
+        "protocols": [
+          "ssrp"
+        ],
+        "protocol_confidence": "curated",
+        "request_ports": {
+          "mode": "selected_service",
+          "values": null,
+          "typical": [
+            1434
+          ]
+        },
+        "affected_service": {
+          "protocols": [
+            "ssrp"
+          ],
+          "ports": null,
+          "typical_ports": [
+            1434
+          ],
+          "scope": "selected_service"
+        },
+        "evidence": {
+          "kind": "available_interface",
+          "confidence": "curated",
+          "basis": [
+            "ServerName and InstanceName fields in SSRP response"
+          ]
+        }
+      }
+    },
+    {
+      "id": "smb-anonymous-read-only",
+      "paths": [
+        "nuclei-templates/javascript/misconfiguration/smb/smb-anonymous-access.yaml"
+      ],
+      "reason": "Local adaptation uses ListSharesReadOnly and an empty username/password; root directory reads only, no write test. Requested null identity may be mapped/rejected by the server; negotiated mode not exposed.",
+      "products": [],
+      "category": {
+        "impact": "Активные проверки",
+        "types": [
+          "Анонимный доступ"
+        ]
+      },
+      "entry": {
+        "impact": {
+          "flags": {
+            "brute_force": false,
+            "exploit": false,
+            "state_change": false,
+            "dos": false,
+            "external_interaction": false,
+            "authentication_attempts": true
+          }
+        },
+        "requirements": {
+          "account": "not_required_for_probe"
+        },
+        "evidence": {
+          "kind": "configuration",
+          "confidence": "curated",
+          "basis": [
+            "SMB share enumeration and root directory read using requested null identity"
+          ]
+        }
+      }
+    },
+    {
+      "id": "winrm-network-audit",
+      "reason": "Сетевые WinRM challenge-пробы: объявленная конфигурация, без входа, делегирования и подтверждения CVE.",
+      "paths": [
+        "nuclei-templates/custom/winrm/microsoft-winrm-auth-methods.yaml",
+        "nuclei-templates/custom/winrm/microsoft-winrm-basic-over-http.yaml",
+        "nuclei-templates/custom/winrm/microsoft-winrm-credssp-advertised.yaml"
+      ],
+      "products": [
+        "microsoft/winrm"
+      ],
+      "category": {
+        "service": "WinRM",
+        "types": [
+          "Обнаружение"
+        ]
+      },
+      "entry": {
+        "protocols": [
+          "http"
+        ],
+        "protocol_confidence": "curated",
+        "request_ports": {
+          "mode": "selected_service",
+          "values": null,
+          "typical": [
+            5985,
+            5986
+          ]
+        },
+        "target": {
+          "fixed_endpoint_review": true
+        },
+        "evidence": {
+          "kind": "configuration",
+          "confidence": "curated",
+          "basis": [
+            "401 Microsoft-HTTPAPI and WWW-Authenticate challenge; advertisement only"
+          ]
+        },
+        "requirements": {
+          "account": "not_required_for_probe"
+        },
+        "impact": {
+          "flags": {
+            "brute_force": false,
+            "exploit": false,
+            "state_change": false,
+            "dos": false,
+            "external_interaction": false,
+            "authentication_attempts": false
+          }
+        }
+      }
+    },
+    {
+      "id": "winrm-basic-http-category",
+      "reason": "Basic challenge на HTTP — потенциально опасная конфигурация, без проверки пароля.",
+      "paths": [
+        "nuclei-templates/custom/winrm/microsoft-winrm-basic-over-http.yaml"
+      ],
+      "category": {
+        "service": "WinRM",
+        "types": [
+          "Неверная конфигурация"
+        ],
+        "impact": "Активные проверки"
+      }
+    },
+    {
+      "id": "database-noauth-probes",
+      "reason": "Выделенные проверки без пароля: PostgreSQL AuthenticationOk до запроса пароля; Redis INFO без AUTH.",
+      "paths": [
+        "nuclei-templates/network/misconfig/unauth-psql.yaml",
+        "nuclei-templates/custom/database-audit/redis-no-auth-access.yaml"
+      ],
+      "category": {
+        "service": "Базы данных",
+        "types": [
+          "Анонимный доступ"
+        ],
+        "impact": "Активные проверки"
+      },
+      "entry": {
+        "request_ports": {
+          "mode": "selected_service",
+          "values": null
+        },
+        "evidence": {
+          "kind": "configuration",
+          "confidence": "curated",
+          "basis": [
+            "Successful protocol operation without password authentication; limited to tested identity/command"
+          ]
+        },
+        "requirements": {
+          "account": "not_required_for_probe"
+        },
+        "impact": {
+          "flags": {
+            "authentication_attempts": false,
+            "brute_force": false,
+            "state_change": false,
+            "exploit": false,
+            "dos": false,
+            "external_interaction": false
+          }
+        }
+      }
+    },
+    {
+      "id": "database-empty-password-probes",
+      "reason": "Точный пустой пароль; PostgreSQL учитывает запрос аутентификации, Redis действительно отправляет AUTH пустой строкой.",
+      "paths": [
+        "nuclei-templates/javascript/misconfiguration/mysql/mysql-empty-password.yaml",
+        "nuclei-templates/javascript/misconfiguration/pgsql/pgsql-empty-password.yaml",
+        "nuclei-templates/custom/database-audit/redis-empty-password-access.yaml"
+      ],
+      "category": {
+        "service": "Базы данных",
+        "types": [
+          "Пустой пароль"
+        ],
+        "impact": "Активные проверки"
+      },
+      "entry": {
+        "evidence": {
+          "kind": "configuration",
+          "confidence": "curated",
+          "basis": [
+            "Successful login with empty password; protocol-specific distinction documented"
+          ]
+        },
+        "impact": {
+          "flags": {
+            "authentication_attempts": true,
+            "brute_force": false,
+            "state_change": false,
+            "exploit": false,
+            "dos": false,
+            "external_interaction": false
+          }
+        }
+      }
+    },
+    {
+      "id": "database-empty-password-nse",
+      "reason": "Нативная проверка конкретных пустых паролей вместо неподдерживаемого/устаревшего NSE-клиента.",
+      "paths": [
+        "nmap/scripts/mysql-empty-password.nse",
+        "nmap/scripts/ms-sql-empty-password.nse"
+      ],
+      "category": {
+        "service": "Базы данных",
+        "types": [
+          "Пустой пароль"
+        ],
+        "impact": "Активные проверки"
+      }
+    },
+    {
+      "id": "elasticsearch-rest-credentials",
+      "reason": "REST API Elasticsearch; перед попытками требуется 401 без учётки, успешный ответ подтверждает elastic.",
+      "paths": [
+        "nuclei-templates/custom/database-audit/elasticsearch-rest-default-login.yaml"
+      ],
+      "category": {
+        "service": "Web",
+        "types": [
+          "Подбор учётных данных"
+        ],
+        "impact": "Сильное воздействие"
+      },
+      "entry": {
+        "evidence": {
+          "kind": "configuration",
+          "confidence": "curated",
+          "basis": [
+            "401 without credentials, then authenticated username elastic with roles"
+          ]
+        },
+        "impact": {
+          "flags": {
+            "authentication_attempts": true,
+            "brute_force": true,
+            "state_change": false,
+            "exploit": false,
+            "dos": false,
+            "external_interaction": false
+          }
+        }
+      }
+    }
+  ],
+  "generic_paths": [
+    "nmap/scripts/smb-os-discovery.nse",
+    "nmap/scripts/ldap-rootdse.nse",
+    "nmap/scripts/ldap-search.nse",
+    "nmap/scripts/rdp-enum-encryption.nse",
+    "nmap/scripts/ssl-cert.nse",
+    "nmap/scripts/ssh-auth-methods.nse",
+    "nmap/scripts/http-title.nse",
+    "nmap/scripts/krb5-enum-users.nse",
+    "nmap/scripts/smtp-enum-users.nse",
+    "nmap/scripts/http-userdir-enum.nse",
+    "nuclei-templates/custom/msf-scanner/msf-ssh-ssh-version.yaml",
+    "nuclei-templates/custom/msf-scanner/msf-smb-smb-version.yaml",
+    "nuclei-templates/javascript/misconfiguration/smb/smb-anonymous-access.yaml"
+  ],
+  "nse_protocol_prefixes": [
+    {
+      "prefix": "http",
+      "protocols": [
+        "http"
+      ]
+    },
+    {
+      "prefix": "ssl",
+      "protocols": [
+        "tls"
+      ]
+    },
+    {
+      "prefix": "smb",
+      "protocols": [
+        "smb"
+      ]
+    },
+    {
+      "prefix": "smb2",
+      "protocols": [
+        "smb"
+      ]
+    },
+    {
+      "prefix": "ldap",
+      "protocols": [
+        "ldap"
+      ]
+    },
+    {
+      "prefix": "krb5",
+      "protocols": [
+        "kerberos"
+      ]
+    },
+    {
+      "prefix": "rpc",
+      "protocols": [
+        "rpc"
+      ]
+    },
+    {
+      "prefix": "msrpc",
+      "protocols": [
+        "rpc"
+      ]
+    },
+    {
+      "prefix": "rdp",
+      "protocols": [
+        "rdp"
+      ]
+    },
+    {
+      "prefix": "ssh",
+      "protocols": [
+        "ssh"
+      ]
+    },
+    {
+      "prefix": "ftp",
+      "protocols": [
+        "ftp"
+      ]
+    },
+    {
+      "prefix": "smtp",
+      "protocols": [
+        "smtp"
+      ]
+    },
+    {
+      "prefix": "imap",
+      "protocols": [
+        "imap"
+      ]
+    },
+    {
+      "prefix": "pop3",
+      "protocols": [
+        "pop3"
+      ]
+    },
+    {
+      "prefix": "dns",
+      "protocols": [
+        "dns"
+      ]
+    },
+    {
+      "prefix": "snmp",
+      "protocols": [
+        "snmp"
+      ]
+    },
+    {
+      "prefix": "mysql",
+      "protocols": [
+        "mysql"
+      ]
+    },
+    {
+      "prefix": "ms-sql",
+      "protocols": [
+        "mssql"
+      ]
+    },
+    {
+      "prefix": "mongodb",
+      "protocols": [
+        "mongodb"
+      ]
+    },
+    {
+      "prefix": "redis",
+      "protocols": [
+        "redis"
+      ]
+    },
+    {
+      "prefix": "modbus",
+      "protocols": [
+        "modbus"
+      ]
+    },
+    {
+      "prefix": "telnet",
+      "protocols": [
+        "telnet"
+      ]
+    },
+    {
+      "prefix": "vnc",
+      "protocols": [
+        "vnc"
+      ]
+    }
+  ],
+  "policy": {
+    "unknown": null,
+    "inferred_bindings": "review_required",
+    "port_only_fingerprint": false,
+    "notes": [
+      "Alias rules are vendor-scoped; whole tokens only; generic protocol names excluded.",
+      "No family/component inheritance for matching; no Windows => AD DS, GitLab => AI Gateway, nginx => application.",
+      "Canonical products may exist without executable checks (AI Gateway, SwOS, AD DS)."
+    ]
+  }
+}

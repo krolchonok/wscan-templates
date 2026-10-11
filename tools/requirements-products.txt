@@ -1,0 +1,2 @@
+# Dependency used by tools/gen_products.py; offline generation after installation.
+PyYAML==6.0.1

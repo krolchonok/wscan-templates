@@ -1,0 +1,1532 @@
+{
+  "checked_at": "2026-10-05",
+  "scope": "GitLab: последние четыре бюллетеня CE/EE (19.2.4–19.4.1); MikroTik: опубликованные в 2025–2026 CVE RouterOS/SwOS из NVD + CERT.PL и бюллетеней производителя. AI Gateway отдельно.",
+  "entries": [
+    {
+      "id": "CVE-2026-89078",
+      "product": "gitlab",
+      "title": "CI/CD regex: double free и выполнение кода",
+      "ranges": [
+        [
+          ">=19.2",
+          "<19.2.7"
+        ],
+        [
+          ">=19.3",
+          "<19.3.3"
+        ],
+        [
+          ">=19.4",
+          "<19.4.1"
+        ]
+      ],
+      "ports": "TCP 80/443, 8080/8443 или настроенный HTTP(S) порт GitLab",
+      "conditions": "GitLab CE/EE; для эксплуатации нужна учётная запись и соответствующая функция/роль",
+      "references": [
+        "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-4-1-released/"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "CVE-2026-93577",
+      "product": "gitlab",
+      "title": "CI/CD regex: integer overflow и выполнение кода",
+      "ranges": [
+        [
+          ">=19.2",
+          "<19.2.7"
+        ],
+        [
+          ">=19.3",
+          "<19.3.3"
+        ],
+        [
+          ">=19.4",
+          "<19.4.1"
+        ]
+      ],
+      "ports": "TCP 80/443, 8080/8443 или настроенный HTTP(S) порт GitLab",
+      "conditions": "GitLab CE/EE; для эксплуатации нужна учётная запись и соответствующая функция/роль",
+      "references": [
+        "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-4-1-released/"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "CVE-2026-84739",
+      "product": "gitlab",
+      "title": "Merge request diff: XSS в именах файлов",
+      "ranges": [
+        [
+          ">=13.11",
+          "<19.2.7"
+        ],
+        [
+          ">=19.3",
+          "<19.3.3"
+        ],
+        [
+          ">=19.4",
+          "<19.4.1"
+        ]
+      ],
+      "ports": "TCP 80/443, 8080/8443 или настроенный HTTP(S) порт GitLab",
+      "conditions": "GitLab CE/EE; для эксплуатации нужна учётная запись и соответствующая функция/роль",
+      "references": [
+        "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-4-1-released/"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "CVE-2026-92470",
+      "product": "gitlab",
+      "title": "Duo AI: доступ к секретам CI/CD через troubleshooting",
+      "ranges": [
+        [
+          ">=18.7",
+          "<19.2.7"
+        ],
+        [
+          ">=19.3",
+          "<19.3.3"
+        ],
+        [
+          ">=19.4",
+          "<19.4.1"
+        ]
+      ],
+      "ports": "TCP 80/443, 8080/8443 или настроенный HTTP(S) порт GitLab",
+      "conditions": "Только GitLab EE; для эксплуатации нужна учётная запись и соответствующая функция/роль",
+      "references": [
+        "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-4-1-released/"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "CVE-2026-92874",
+      "product": "gitlab",
+      "title": "MCP API: обход ограничений scope токена",
+      "ranges": [
+        [
+          ">=18.3",
+          "<19.2.7"
+        ],
+        [
+          ">=19.3",
+          "<19.3.3"
+        ],
+        [
+          ">=19.4",
+          "<19.4.1"
+        ]
+      ],
+      "ports": "TCP 80/443, 8080/8443 или настроенный HTTP(S) порт GitLab",
+      "conditions": "GitLab CE/EE; для эксплуатации нужна учётная запись и соответствующая функция/роль",
+      "references": [
+        "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-4-1-released/"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "CVE-2026-92530",
+      "product": "gitlab",
+      "title": "Direct Transfer: подмена авторства при импорте",
+      "ranges": [
+        [
+          ">=19.1",
+          "<19.2.7"
+        ],
+        [
+          ">=19.3",
+          "<19.3.3"
+        ],
+        [
+          ">=19.4",
+          "<19.4.1"
+        ]
+      ],
+      "ports": "TCP 80/443, 8080/8443 или настроенный HTTP(S) порт GitLab",
+      "conditions": "GitLab CE/EE; для эксплуатации нужна учётная запись и соответствующая функция/роль",
+      "references": [
+        "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-4-1-released/"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "CVE-2026-8937",
+      "product": "gitlab",
+      "title": "Epic Issues REST: доступ к приватным задачам",
+      "ranges": [
+        [
+          ">=19.0",
+          "<19.2.7"
+        ],
+        [
+          ">=19.3",
+          "<19.3.3"
+        ],
+        [
+          ">=19.4",
+          "<19.4.1"
+        ]
+      ],
+      "ports": "TCP 80/443, 8080/8443 или настроенный HTTP(S) порт GitLab",
+      "conditions": "GitLab CE/EE; для эксплуатации нужна учётная запись и соответствующая функция/роль",
+      "references": [
+        "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-4-1-released/"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "CVE-2026-92529",
+      "product": "gitlab",
+      "title": "Duo Workflow: обход правил управления AI инструментами",
+      "ranges": [
+        [
+          ">=19.1",
+          "<19.2.7"
+        ],
+        [
+          ">=19.3",
+          "<19.3.3"
+        ],
+        [
+          ">=19.4",
+          "<19.4.1"
+        ]
+      ],
+      "ports": "TCP 80/443, 8080/8443 или настроенный HTTP(S) порт GitLab",
+      "conditions": "Только GitLab EE; для эксплуатации нужна учётная запись и соответствующая функция/роль",
+      "references": [
+        "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-4-1-released/"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "CVE-2026-10518",
+      "product": "gitlab",
+      "title": "GraphQL memberRoles: доступ к приватным security policies",
+      "ranges": [
+        [
+          ">=17.9",
+          "<19.2.7"
+        ],
+        [
+          ">=19.3",
+          "<19.3.3"
+        ],
+        [
+          ">=19.4",
+          "<19.4.1"
+        ]
+      ],
+      "ports": "TCP 80/443, 8080/8443 или настроенный HTTP(S) порт GitLab",
+      "conditions": "Только GitLab EE; для эксплуатации нужна учётная запись и соответствующая функция/роль",
+      "references": [
+        "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-4-1-released/"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "CVE-2026-4523",
+      "product": "gitlab",
+      "title": "GraphQL: чтение CI job trace без аутентификации",
+      "ranges": [
+        [
+          ">=15.11",
+          "<19.2.7"
+        ],
+        [
+          ">=19.3",
+          "<19.3.3"
+        ],
+        [
+          ">=19.4",
+          "<19.4.1"
+        ]
+      ],
+      "ports": "TCP 80/443, 8080/8443 или настроенный HTTP(S) порт GitLab",
+      "conditions": "GitLab CE/EE; см. условия эксплуатации в бюллетене",
+      "references": [
+        "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-4-1-released/"
+      ],
+      "severity": "low"
+    },
+    {
+      "id": "CVE-2026-92628",
+      "product": "gitlab",
+      "title": "MCP gitlab_search: результаты в чужом контексте",
+      "ranges": [
+        [
+          ">=18.6",
+          "<19.2.7"
+        ],
+        [
+          ">=19.3",
+          "<19.3.3"
+        ],
+        [
+          ">=19.4",
+          "<19.4.1"
+        ]
+      ],
+      "ports": "TCP 80/443, 8080/8443 или настроенный HTTP(S) порт GitLab",
+      "conditions": "GitLab CE/EE; см. условия эксплуатации в бюллетене",
+      "references": [
+        "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-4-1-released/"
+      ],
+      "severity": "low"
+    },
+    {
+      "id": "CVE-2026-85706",
+      "product": "gitlab",
+      "title": "Commits API: обход пути и чтение файлов без входа",
+      "ranges": [
+        [
+          ">=18.7",
+          "<18.11.12"
+        ],
+        [
+          ">=19.0",
+          "<19.0.9"
+        ],
+        [
+          ">=19.1",
+          "<19.1.8"
+        ],
+        [
+          ">=19.2",
+          "<19.2.6"
+        ],
+        [
+          ">=19.3",
+          "<19.3.2"
+        ]
+      ],
+      "ports": "TCP 80/443, 8080/8443 или настроенный HTTP(S) порт GitLab",
+      "conditions": "GitLab CE/EE; см. условия эксплуатации в бюллетене",
+      "references": [
+        "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-3-2-released/"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "CVE-2026-87719",
+      "product": "gitlab",
+      "title": "GraphQL subscriptions: небезопасная десериализация",
+      "ranges": [
+        [
+          ">=18.3",
+          "<18.11.12"
+        ],
+        [
+          ">=19.0",
+          "<19.0.9"
+        ],
+        [
+          ">=19.1",
+          "<19.1.8"
+        ],
+        [
+          ">=19.2",
+          "<19.2.6"
+        ],
+        [
+          ">=19.3",
+          "<19.3.2"
+        ]
+      ],
+      "ports": "TCP 80/443, 8080/8443 или настроенный HTTP(S) порт GitLab",
+      "conditions": "Только GitLab EE; для эксплуатации нужна учётная запись и соответствующая функция/роль",
+      "references": [
+        "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-3-2-released/"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "CVE-2026-88765",
+      "product": "gitlab",
+      "title": "Advanced Search import: переполнение буфера Unicode",
+      "ranges": [
+        [
+          ">=12.3",
+          "<19.1.8"
+        ],
+        [
+          ">=19.2",
+          "<19.2.6"
+        ],
+        [
+          ">=19.3",
+          "<19.3.2"
+        ]
+      ],
+      "ports": "TCP 80/443, 8080/8443 или настроенный HTTP(S) порт GitLab",
+      "conditions": "Только GitLab EE; для эксплуатации нужна учётная запись и соответствующая функция/роль",
+      "references": [
+        "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-3-2-released/"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "CVE-2026-79708",
+      "product": "gitlab",
+      "title": "Pipeline Execution Policy: доступ к защищённым переменным",
+      "ranges": [
+        [
+          ">=19.0",
+          "<19.1.8"
+        ],
+        [
+          ">=19.2",
+          "<19.2.6"
+        ],
+        [
+          ">=19.3",
+          "<19.3.2"
+        ]
+      ],
+      "ports": "TCP 80/443, 8080/8443 или настроенный HTTP(S) порт GitLab",
+      "conditions": "Только GitLab EE; для эксплуатации нужна учётная запись и соответствующая функция/роль",
+      "references": [
+        "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-3-2-released/"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "CVE-2026-78252",
+      "product": "gitlab",
+      "title": "Markdown JSON tables: XSS",
+      "ranges": [
+        [
+          ">=15.3",
+          "<19.1.8"
+        ],
+        [
+          ">=19.2",
+          "<19.2.6"
+        ],
+        [
+          ">=19.3",
+          "<19.3.2"
+        ]
+      ],
+      "ports": "TCP 80/443, 8080/8443 или настроенный HTTP(S) порт GitLab",
+      "conditions": "GitLab CE/EE; для эксплуатации нужна учётная запись и соответствующая функция/роль",
+      "references": [
+        "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-3-2-released/"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "CVE-2026-13210",
+      "product": "gitlab",
+      "title": "CI/CD variables: обход ограничения environment scope",
+      "ranges": [
+        [
+          ">=15.7",
+          "<19.1.8"
+        ],
+        [
+          ">=19.2",
+          "<19.2.6"
+        ],
+        [
+          ">=19.3",
+          "<19.3.2"
+        ]
+      ],
+      "ports": "TCP 80/443, 8080/8443 или настроенный HTTP(S) порт GitLab",
+      "conditions": "GitLab CE/EE; для эксплуатации нужна учётная запись и соответствующая функция/роль",
+      "references": [
+        "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-3-2-released/"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "CVE-2025-14871",
+      "product": "gitlab",
+      "title": "GraphQL complexity: отказ в обслуживании",
+      "ranges": [
+        [
+          ">=18.4.6",
+          "<19.1.8"
+        ],
+        [
+          ">=19.2",
+          "<19.2.6"
+        ],
+        [
+          ">=19.3",
+          "<19.3.2"
+        ]
+      ],
+      "ports": "TCP 80/443, 8080/8443 или настроенный HTTP(S) порт GitLab",
+      "conditions": "GitLab CE/EE; см. условия эксплуатации в бюллетене",
+      "references": [
+        "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-3-2-released/"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "CVE-2026-1168",
+      "product": "gitlab",
+      "title": "GraphQL complexity: отказ в обслуживании",
+      "ranges": [
+        [
+          ">=18.4.6",
+          "<19.1.8"
+        ],
+        [
+          ">=19.2",
+          "<19.2.6"
+        ],
+        [
+          ">=19.3",
+          "<19.3.2"
+        ]
+      ],
+      "ports": "TCP 80/443, 8080/8443 или настроенный HTTP(S) порт GitLab",
+      "conditions": "GitLab CE/EE; см. условия эксплуатации в бюллетене",
+      "references": [
+        "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-3-2-released/"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "CVE-2024-11222",
+      "product": "gitlab",
+      "title": "Merge Request Pipelines: гонка при создании pipeline",
+      "ranges": [
+        [
+          ">=13.0",
+          "<19.1.8"
+        ],
+        [
+          ">=19.2",
+          "<19.2.6"
+        ],
+        [
+          ">=19.3",
+          "<19.3.2"
+        ]
+      ],
+      "ports": "TCP 80/443, 8080/8443 или настроенный HTTP(S) порт GitLab",
+      "conditions": "GitLab CE/EE; см. условия эксплуатации в бюллетене",
+      "references": [
+        "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-3-2-released/"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "CVE-2026-12910",
+      "product": "gitlab",
+      "title": "SAML SSO: обход ограничения входа",
+      "ranges": [
+        [
+          ">=18.6",
+          "<19.1.8"
+        ],
+        [
+          ">=19.2",
+          "<19.2.6"
+        ],
+        [
+          ">=19.3",
+          "<19.3.2"
+        ]
+      ],
+      "ports": "TCP 80/443, 8080/8443 или настроенный HTTP(S) порт GitLab",
+      "conditions": "GitLab CE/EE; для эксплуатации нужна учётная запись и соответствующая функция/роль",
+      "references": [
+        "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-3-2-released/"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "CVE-2026-82837",
+      "product": "gitlab",
+      "title": "Workhorse senddata: раскрытие credentials и токенов",
+      "ranges": [
+        [
+          ">=10.1.0",
+          "<19.1.8"
+        ],
+        [
+          ">=19.2",
+          "<19.2.6"
+        ],
+        [
+          ">=19.3",
+          "<19.3.2"
+        ]
+      ],
+      "ports": "TCP 80/443, 8080/8443 или настроенный HTTP(S) порт GitLab",
+      "conditions": "GitLab CE/EE; для эксплуатации нужна учётная запись и соответствующая функция/роль",
+      "references": [
+        "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-3-2-released/"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "CVE-2026-19619",
+      "product": "gitlab",
+      "title": "Content Editor: XSS через вставленный HTML",
+      "ranges": [
+        [
+          ">=19.0",
+          "<19.1.8"
+        ],
+        [
+          ">=19.2",
+          "<19.2.6"
+        ],
+        [
+          ">=19.3",
+          "<19.3.2"
+        ]
+      ],
+      "ports": "TCP 80/443, 8080/8443 или настроенный HTTP(S) порт GitLab",
+      "conditions": "GitLab CE/EE; см. условия эксплуатации в бюллетене",
+      "references": [
+        "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-3-2-released/"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "CVE-2026-86341",
+      "product": "gitlab",
+      "title": "Protected environments: отключение approval правил",
+      "ranges": [
+        [
+          ">=17.1",
+          "<19.1.8"
+        ],
+        [
+          ">=19.2",
+          "<19.2.6"
+        ],
+        [
+          ">=19.3",
+          "<19.3.2"
+        ]
+      ],
+      "ports": "TCP 80/443, 8080/8443 или настроенный HTTP(S) порт GitLab",
+      "conditions": "Только GitLab EE; для эксплуатации нужна учётная запись и соответствующая функция/роль",
+      "references": [
+        "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-3-2-released/"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "CVE-2026-86340",
+      "product": "gitlab",
+      "title": "Protected environments: обход approval правил",
+      "ranges": [
+        [
+          ">=17.1",
+          "<19.1.8"
+        ],
+        [
+          ">=19.2",
+          "<19.2.6"
+        ],
+        [
+          ">=19.3",
+          "<19.3.2"
+        ]
+      ],
+      "ports": "TCP 80/443, 8080/8443 или настроенный HTTP(S) порт GitLab",
+      "conditions": "Только GitLab EE; для эксплуатации нужна учётная запись и соответствующая функция/роль",
+      "references": [
+        "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-3-2-released/"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "CVE-2026-7514",
+      "product": "gitlab",
+      "title": "Generic Package Registry: отсутствие проверки прав",
+      "ranges": [
+        [
+          ">=13.9",
+          "<19.1.8"
+        ],
+        [
+          ">=19.2",
+          "<19.2.6"
+        ],
+        [
+          ">=19.3",
+          "<19.3.2"
+        ]
+      ],
+      "ports": "TCP 80/443, 8080/8443 или настроенный HTTP(S) порт GitLab",
+      "conditions": "GitLab CE/EE; для эксплуатации нужна учётная запись и соответствующая функция/роль",
+      "references": [
+        "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-3-2-released/"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "CVE-2026-8030",
+      "product": "gitlab",
+      "title": "Namespace Transfer: недостаточная проверка входных данных",
+      "ranges": [
+        [
+          ">=13.0",
+          "<19.1.8"
+        ],
+        [
+          ">=19.2",
+          "<19.2.6"
+        ],
+        [
+          ">=19.3",
+          "<19.3.2"
+        ]
+      ],
+      "ports": "TCP 80/443, 8080/8443 или настроенный HTTP(S) порт GitLab",
+      "conditions": "GitLab CE/EE; для эксплуатации нужна учётная запись и соответствующая функция/роль",
+      "references": [
+        "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-3-2-released/"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "CVE-2026-16794",
+      "product": "gitlab",
+      "title": "Compliance Framework: отсутствие проверки прав",
+      "ranges": [
+        [
+          ">=18.11",
+          "<19.1.8"
+        ],
+        [
+          ">=19.2",
+          "<19.2.6"
+        ],
+        [
+          ">=19.3",
+          "<19.3.2"
+        ]
+      ],
+      "ports": "TCP 80/443, 8080/8443 или настроенный HTTP(S) порт GitLab",
+      "conditions": "Только GitLab EE; для эксплуатации нужна учётная запись и соответствующая функция/роль",
+      "references": [
+        "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-3-2-released/"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "CVE-2026-3855",
+      "product": "gitlab",
+      "title": "Terraform State API: недостаточная проверка входных данных",
+      "ranges": [
+        [
+          ">=18.2.7",
+          "<19.1.8"
+        ],
+        [
+          ">=19.2",
+          "<19.2.6"
+        ],
+        [
+          ">=19.3",
+          "<19.3.2"
+        ]
+      ],
+      "ports": "TCP 80/443, 8080/8443 или настроенный HTTP(S) порт GitLab",
+      "conditions": "GitLab CE/EE; для эксплуатации нужна учётная запись и соответствующая функция/роль",
+      "references": [
+        "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-3-2-released/"
+      ],
+      "severity": "low"
+    },
+    {
+      "id": "CVE-2026-18252",
+      "product": "gitlab",
+      "title": "Duo Claude: выполнение команд из пользовательской конфигурации",
+      "ranges": [
+        [
+          ">=18.9",
+          "<19.1.7"
+        ],
+        [
+          ">=19.2",
+          "<19.2.5"
+        ],
+        [
+          ">=19.3",
+          "<19.3.1"
+        ]
+      ],
+      "ports": "TCP 80/443, 8080/8443 или настроенный HTTP(S) порт GitLab",
+      "conditions": "Только GitLab EE; для эксплуатации нужна учётная запись и соответствующая функция/роль",
+      "references": [
+        "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-3-1-released/"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "CVE-2026-77801",
+      "product": "gitlab",
+      "title": "Import pipeline: отказ в обслуживании",
+      "ranges": [
+        [
+          ">=12.8",
+          "<19.1.7"
+        ],
+        [
+          ">=19.2",
+          "<19.2.5"
+        ],
+        [
+          ">=19.3",
+          "<19.3.1"
+        ]
+      ],
+      "ports": "TCP 80/443, 8080/8443 или настроенный HTTP(S) порт GitLab",
+      "conditions": "GitLab CE/EE; для эксплуатации нужна учётная запись и соответствующая функция/роль",
+      "references": [
+        "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-3-1-released/"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "CVE-2025-10903",
+      "product": "gitlab",
+      "title": "SCIM API: отказ в обслуживании",
+      "ranges": [
+        [
+          ">=11.10",
+          "<19.1.7"
+        ],
+        [
+          ">=19.2",
+          "<19.2.5"
+        ],
+        [
+          ">=19.3",
+          "<19.3.1"
+        ]
+      ],
+      "ports": "TCP 80/443, 8080/8443 или настроенный HTTP(S) порт GitLab",
+      "conditions": "Только GitLab EE; для эксплуатации нужна учётная запись и соответствующая функция/роль",
+      "references": [
+        "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-3-1-released/"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "CVE-2026-3035",
+      "product": "gitlab",
+      "title": "Protected environments: доступ к чужому терминалу",
+      "ranges": [
+        [
+          ">=11.3",
+          "<19.1.7"
+        ],
+        [
+          ">=19.2",
+          "<19.2.5"
+        ],
+        [
+          ">=19.3",
+          "<19.3.1"
+        ]
+      ],
+      "ports": "TCP 80/443, 8080/8443 или настроенный HTTP(S) порт GitLab",
+      "conditions": "Только GitLab EE; для эксплуатации нужна учётная запись и соответствующая функция/роль",
+      "references": [
+        "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-3-1-released/"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "CVE-2026-4398",
+      "product": "gitlab",
+      "title": "Compliance framework assignment: обход прав namespace",
+      "ranges": [
+        [
+          ">=18.3",
+          "<19.1.7"
+        ],
+        [
+          ">=19.2",
+          "<19.2.5"
+        ],
+        [
+          ">=19.3",
+          "<19.3.1"
+        ]
+      ],
+      "ports": "TCP 80/443, 8080/8443 или настроенный HTTP(S) порт GitLab",
+      "conditions": "Только GitLab EE; для эксплуатации нужна учётная запись и соответствующая функция/роль",
+      "references": [
+        "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-3-1-released/"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "CVE-2026-15387",
+      "product": "gitlab",
+      "title": "Pipeline Execution Policies: влияние на среду выполнения",
+      "ranges": [
+        [
+          ">=19.1",
+          "<19.1.7"
+        ],
+        [
+          ">=19.2",
+          "<19.2.5"
+        ],
+        [
+          ">=19.3",
+          "<19.3.1"
+        ]
+      ],
+      "ports": "TCP 80/443, 8080/8443 или настроенный HTTP(S) порт GitLab",
+      "conditions": "Только GitLab EE; для эксплуатации нужна учётная запись и соответствующая функция/роль",
+      "references": [
+        "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-3-1-released/"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "CVE-2026-7487",
+      "product": "gitlab",
+      "title": "Merge request: сброс approval правил без необходимых прав",
+      "ranges": [
+        [
+          ">=13.1",
+          "<19.1.7"
+        ],
+        [
+          ">=19.2",
+          "<19.2.5"
+        ],
+        [
+          ">=19.3",
+          "<19.3.1"
+        ]
+      ],
+      "ports": "TCP 80/443, 8080/8443 или настроенный HTTP(S) порт GitLab",
+      "conditions": "Только GitLab EE; для эксплуатации нужна учётная запись и соответствующая функция/роль",
+      "references": [
+        "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-3-1-released/"
+      ],
+      "severity": "low"
+    },
+    {
+      "id": "CVE-2026-19478",
+      "product": "gitlab",
+      "title": "GraphQL directive: внедрение кода / изменение данных",
+      "ranges": [
+        [
+          ">=18.2",
+          "<18.11.11"
+        ],
+        [
+          ">=19.0",
+          "<19.0.8"
+        ],
+        [
+          ">=19.1",
+          "<19.1.6"
+        ],
+        [
+          ">=19.2",
+          "<19.2.4"
+        ]
+      ],
+      "ports": "TCP 80/443, 8080/8443 или настроенный HTTP(S) порт GitLab",
+      "conditions": "GitLab CE/EE; см. условия эксплуатации в бюллетене",
+      "references": [
+        "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-2-4-released/"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "CVE-2026-19650",
+      "product": "gitlab",
+      "title": "GraphQL multiplex: CSRF",
+      "ranges": [
+        [
+          ">=18.2",
+          "<18.11.11"
+        ],
+        [
+          ">=19.0",
+          "<19.0.8"
+        ],
+        [
+          ">=19.1",
+          "<19.1.6"
+        ],
+        [
+          ">=19.2",
+          "<19.2.4"
+        ]
+      ],
+      "ports": "TCP 80/443, 8080/8443 или настроенный HTTP(S) порт GitLab",
+      "conditions": "GitLab CE/EE; см. условия эксплуатации в бюллетене",
+      "references": [
+        "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-2-4-released/"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "CVE-2024-54772",
+      "product": "mikrotik",
+      "title": "WinBox: определение существующих пользователей",
+      "ranges": [
+        [
+          ">=6.43",
+          "<6.49.18"
+        ],
+        [
+          ">=7.1",
+          "<7.18"
+        ]
+      ],
+      "ports": "TCP 8291 WinBox",
+      "conditions": "Для подтверждения нужны попытки входа; здесь только оценка версии",
+      "references": [
+        "https://www.cve.org/CVERecord?id=CVE-2024-54772",
+        "https://github.com/deauther890/CVE-2024-54772"
+      ],
+      "severity": "medium",
+      "manual": false
+    },
+    {
+      "id": "CVE-2024-54952",
+      "product": "mikrotik",
+      "title": "SMB: повреждение памяти / отказ в обслуживании",
+      "ranges": [
+        [
+          "=6.40.5"
+        ]
+      ],
+      "ports": "TCP 445 SMB",
+      "conditions": "SMB должен быть включён",
+      "references": [
+        "https://www.cve.org/CVERecord?id=CVE-2024-54952",
+        "https://github.com/noobone123/RouterOS-issues/blob/main/README.md"
+      ],
+      "severity": "high",
+      "manual": false
+    },
+    {
+      "id": "CVE-2025-6443",
+      "product": "mikrotik",
+      "title": "VXLAN: обход ограничений адреса источника",
+      "ranges": [
+        [
+          ">=7.0",
+          "<7.20"
+        ]
+      ],
+      "ports": "UDP 4789 VXLAN или настроенный порт",
+      "conditions": "VXLAN должен быть настроен; наличие туннеля не проверяется",
+      "references": [
+        "https://www.cve.org/CVERecord?id=CVE-2025-6443",
+        "https://www.zerodayinitiative.com/advisories/ZDI-25-424/"
+      ],
+      "severity": "high",
+      "manual": false
+    },
+    {
+      "id": "CVE-2023-47310",
+      "product": "mikrotik",
+      "title": "IPv6: пропуск UDP traceroute",
+      "ranges": [
+        [
+          ">=6.0",
+          "<6.49.13"
+        ],
+        [
+          ">=7.0",
+          "<7.14"
+        ]
+      ],
+      "ports": "IPv6 UDP traceroute, обычно 33434–33534",
+      "conditions": "Зависит от правил IPv6 firewall",
+      "references": [
+        "https://www.cve.org/CVERecord?id=CVE-2023-47310",
+        "https://forum.mikrotik.com/t/fixed-in-7-14-security-vulnerability-default-configuration-firewall-bypass-for-ipv6-udp/262186"
+      ],
+      "severity": "medium",
+      "manual": false
+    },
+    {
+      "id": "CVE-2025-6563",
+      "product": "mikrotik",
+      "title": "Hotspot: XSS через параметр dst",
+      "ranges": [
+        [
+          ">=7.0",
+          "<7.19.2"
+        ]
+      ],
+      "ports": "TCP 80/443 Hotspot HTTP(S)",
+      "conditions": "Нужен Hotspot и переход пользователя по ссылке",
+      "references": [
+        "https://www.cve.org/CVERecord?id=CVE-2025-6563",
+        "https://www.toreon.com/how-a-ski-trip-led-to-a-cve-in-a-wi-fi-hotspot/"
+      ],
+      "severity": "medium",
+      "manual": false
+    },
+    {
+      "id": "CVE-2025-10948",
+      "product": "mikrotik",
+      "title": "REST API: переполнение буфера JSON",
+      "ranges": [
+        [
+          ">=7.0",
+          "<7.20.1"
+        ]
+      ],
+      "ports": "TCP 80/443 REST API",
+      "conditions": "REST API /rest/ip/address/print; учётная запись и права по конфигурации",
+      "references": [
+        "https://www.cve.org/CVERecord?id=CVE-2025-10948",
+        "https://github.com/a2ure123/libjson-unicode-buffer-overflow-poc",
+        "https://github.com/a2ure123/libjson-unicode-buffer-overflow-poc#technical-proof-of-concept",
+        "https://vuldb.com/?ctiid.325818"
+      ],
+      "severity": "critical",
+      "manual": false
+    },
+    {
+      "id": "CVE-2025-61481",
+      "product": "mikrotik",
+      "title": "WebFig: передача управления по HTTP",
+      "ranges": [
+        [
+          "=7.14.2"
+        ]
+      ],
+      "ports": "TCP 80 HTTP WebFig; SwOS 2.18 также указан в CNA",
+      "conditions": "Нужен доступ HTTP без TLS и атакующий на пути трафика; SwOS требует отдельной идентификации",
+      "references": [
+        "https://www.cve.org/CVERecord?id=CVE-2025-61481",
+        "https://help.mikrotik.com/docs/spaces/ROS/pages/328131/WebFig",
+        "https://help.mikrotik.com/docs/spaces/SWOS/pages/328415/SwOS",
+        "https://svarthatt.se/cve/mikrotik-swos-cve-2025-61481/"
+      ],
+      "severity": "critical",
+      "manual": false
+    },
+    {
+      "id": "CVE-2026-7668",
+      "product": "mikrotik",
+      "title": "SCEP: чтение за границей буфера",
+      "ranges": [
+        [
+          "=6.49.8"
+        ]
+      ],
+      "ports": "TCP 80/443 SCEP",
+      "conditions": "Проверка только указанной в CNA версии 6.49.8; точная граница исправления не опубликована",
+      "references": [
+        "https://www.cve.org/CVERecord?id=CVE-2026-7668",
+        "https://github.com/ezio315/cve/issues/4",
+        "https://vuldb.com/submit/798623",
+        "https://vuldb.com/vuln/360804"
+      ],
+      "severity": "high",
+      "manual": false
+    },
+    {
+      "id": "CVE-2024-27686",
+      "product": "mikrotik",
+      "title": "SMB x86: отказ в обслуживании",
+      "ranges": [
+        [
+          ">=6.40.5",
+          "<=6.49.10"
+        ]
+      ],
+      "ports": "TCP 445 SMB",
+      "conditions": "Только RouterOS x86 с включённым SMB; архитектура не определяется",
+      "references": [
+        "https://www.cve.org/CVERecord?id=CVE-2024-27686",
+        "https://github.com/ice-wzl/RouterOS-SMB-DOS-POC",
+        "https://www.exploit-db.com/exploits/51931"
+      ],
+      "severity": "high",
+      "manual": false
+    },
+    {
+      "id": "CVE-2026-39042",
+      "product": "mikrotik",
+      "title": "IPC: integer overflow / отказ в обслуживании",
+      "ranges": [
+        [
+          ">=7.21",
+          "<7.21.4"
+        ],
+        [
+          ">=7.22",
+          "<7.22.2"
+        ]
+      ],
+      "ports": "Интерфейсы управления RouterOS; единого отдельного IPC TCP/UDP порта нет",
+      "conditions": "Зависит от доступного интерфейса, передающего сообщения libumsg",
+      "references": [
+        "https://www.cve.org/CVERecord?id=CVE-2026-39042",
+        "https://mikrotik.com/supportsec",
+        "https://zakpatrik.cz/blog/finding-an-integer-overflow-in-mikrotik-routeros-core-ipc-library"
+      ],
+      "severity": "high",
+      "manual": false
+    },
+    {
+      "id": "CVE-2026-67276",
+      "product": "mikrotik",
+      "title": "SSH: обход проверки RSA ключа",
+      "ranges": [
+        [
+          ">=7.9",
+          "<7.23.4"
+        ],
+        [
+          ">=7.24",
+          "<7.24.2"
+        ]
+      ],
+      "ports": "TCP 22 SSH",
+      "conditions": "Нужны имя пользователя и публичный RSA modulus; не проверяется вход",
+      "references": [
+        "https://www.cve.org/CVERecord?id=CVE-2026-67276",
+        "https://cert.pl/en/posts/2026/09/mikrotik-routeros-cve/"
+      ],
+      "severity": "high",
+      "manual": false
+    },
+    {
+      "id": "CVE-2026-67277",
+      "product": "mikrotik",
+      "title": "Bandwidth-test: утечка памяти / перезапуск",
+      "ranges": [
+        [
+          ">=6.0",
+          "<6.49.21"
+        ],
+        [
+          ">=7.0",
+          "<7.23.4"
+        ],
+        [
+          ">=7.24",
+          "<7.24.2"
+        ]
+      ],
+      "ports": "TCP 2000 bandwidth-test; UDP тестовые потоки",
+      "conditions": "Служба bandwidth-test должна быть доступна",
+      "references": [
+        "https://www.cve.org/CVERecord?id=CVE-2026-67277",
+        "https://cert.pl/en/posts/2026/09/mikrotik-routeros-cve/"
+      ],
+      "severity": "high",
+      "manual": false
+    },
+    {
+      "id": "CVE-2026-67278",
+      "product": "mikrotik",
+      "title": "RSA: некорректная проверка подписи",
+      "ranges": [
+        [
+          ">=7.0",
+          "<7.23.6"
+        ],
+        [
+          ">=7.24",
+          "<7.24.3"
+        ]
+      ],
+      "ports": "Исходящие TLS/X.509 и SSH соединения; фиксированного входящего порта нет",
+      "conditions": "Исправление 7.23.4/7.24.2 было неполным; нужен контроль пути исходящего соединения",
+      "references": [
+        "https://www.cve.org/CVERecord?id=CVE-2026-67278",
+        "https://cert.pl/en/posts/2026/09/mikrotik-routeros-cve",
+        "https://cert.pl/en/posts/2026/09/vulnerabilities-in-mikrotik-routeros-actively-exploited/",
+        "https://forum.mikrotik.com/t/7-23-6-long-term-is-released/273139",
+        "https://cert.pl/en/posts/2026/09/mikrotik-routeros-cve/"
+      ],
+      "severity": "critical",
+      "manual": false
+    },
+    {
+      "id": "CVE-2026-67279",
+      "product": "mikrotik",
+      "title": "SSH: обход аутентификации при rekey",
+      "ranges": [
+        [
+          ">=6.0",
+          "<6.49.21"
+        ],
+        [
+          ">=7.0",
+          "<7.23.4"
+        ],
+        [
+          ">=7.24",
+          "<7.24.2"
+        ]
+      ],
+      "ports": "TCP 22 SSH",
+      "conditions": "SSH должен быть включён; exec и запись файлов не выполняются",
+      "references": [
+        "https://www.cve.org/CVERecord?id=CVE-2026-67279",
+        "https://cert.pl/en/posts/2026/09/mikrotik-routeros-cve/"
+      ],
+      "severity": "high",
+      "manual": false
+    },
+    {
+      "id": "CVE-2026-67281",
+      "product": "mikrotik",
+      "title": "WebFig: чтение файлов без аутентификации",
+      "ranges": [
+        [
+          ">=7.20",
+          "<7.23.4"
+        ],
+        [
+          ">=7.24",
+          "<7.24.2"
+        ]
+      ],
+      "ports": "TCP 80/443 WebFig /jsproxy",
+      "conditions": "WebFig должен быть доступен",
+      "references": [
+        "https://www.cve.org/CVERecord?id=CVE-2026-67281",
+        "https://cert.pl/en/posts/2026/09/mikrotik-routeros-cve/"
+      ],
+      "severity": "high",
+      "manual": false
+    },
+    {
+      "id": "CVE-2026-86060",
+      "product": "mikrotik",
+      "title": "SSH: повышение привилегий через имя пользователя",
+      "ranges": [
+        [
+          ">=6.0",
+          "<6.49.21"
+        ],
+        [
+          ">=7.0",
+          "<7.23.4"
+        ],
+        [
+          ">=7.24",
+          "<7.24.2"
+        ]
+      ],
+      "ports": "TCP 22 SSH",
+      "conditions": "Зависит от возможности достичь login helper; попытки входа не выполняются",
+      "references": [
+        "https://www.cve.org/CVERecord?id=CVE-2026-86060",
+        "https://cert.pl/en/posts/2026/09/mikrotik-routeros-cve/"
+      ],
+      "severity": "high",
+      "manual": false
+    },
+    {
+      "id": "CVE-2026-89020",
+      "product": "mikrotik",
+      "title": "TFTP клиент: переполнение буфера mtget",
+      "ranges": [
+        [
+          ">=6.0",
+          "<6.49.21"
+        ],
+        [
+          ">=7.0",
+          "<7.23.4"
+        ],
+        [
+          ">=7.24",
+          "<7.24.2"
+        ]
+      ],
+      "ports": "Исходящий UDP 69 TFTP; управление через SSH/API/WebFig",
+      "conditions": "Нужна учётная запись с доступом к /tool fetch; входящий UDP 69 не является условием",
+      "references": [
+        "https://www.cve.org/CVERecord?id=CVE-2026-89020",
+        "https://forum.mikrotik.com/t/7-23-4-long-term-is-released/272801",
+        "https://forum.mikrotik.com/t/7-24-2-stable-is-released/272800",
+        "https://www.vulncheck.com/advisories/mikrotik-routeros-stack-buffer-overflow-via-tftp-url-path"
+      ],
+      "severity": "medium",
+      "manual": false
+    },
+    {
+      "id": "CVE-2026-89021",
+      "product": "mikrotik",
+      "title": "Container: выход за каталог при импорте",
+      "ranges": [
+        [
+          ">=7.0",
+          "<7.24.2"
+        ]
+      ],
+      "ports": "Порты управления SSH 22, API 8728/8729, WebFig 80/443",
+      "conditions": "Нужен пакет container и возможность импортировать образ; 7.23.x не исправлена",
+      "references": [
+        "https://www.cve.org/CVERecord?id=CVE-2026-89021",
+        "https://forum.mikrotik.com/t/7-24-2-stable-is-released/272800",
+        "https://www.vulncheck.com/advisories/mikrotik-routeros-path-traversal-via-container-oci-tar-image-extraction"
+      ],
+      "severity": "medium",
+      "manual": false
+    },
+    {
+      "id": "CVE-2026-56719",
+      "product": "mikrotik",
+      "title": "SMB1: чтение за границей буфера",
+      "ranges": [
+        [
+          ">=6.0",
+          "<=6.49.18"
+        ],
+        [
+          ">=7.0",
+          "<=7.11.2"
+        ]
+      ],
+      "ports": "TCP 445 SMB",
+      "conditions": "CNA явно подтверждает эти диапазоны и исправление 7.24; промежуточные версии требуют ручной проверки",
+      "references": [
+        "https://www.cve.org/CVERecord?id=CVE-2026-56719",
+        "https://forum.mikrotik.com/t/7-24-stable-is-released/272381",
+        "https://www.vulncheck.com/advisories/mikrotik-routeros-out-of-bounds-read-via-smb1-sessionsetupandx"
+      ],
+      "severity": "medium",
+      "manual": false
+    },
+    {
+      "id": "CVE-2026-89028",
+      "product": "mikrotik",
+      "title": "SMB1: повреждение heap",
+      "ranges": [
+        [
+          ">=6.0",
+          "<7.24"
+        ]
+      ],
+      "ports": "TCP 445 SMB",
+      "conditions": "SMB1 должен быть доступен",
+      "references": [
+        "https://www.cve.org/CVERecord?id=CVE-2026-89028",
+        "https://forum.mikrotik.com/t/7-24-stable-is-released/272381",
+        "https://www.vulncheck.com/advisories/mikrotik-routeros-heap-corruption-via-smb1-sessionsetupandx"
+      ],
+      "severity": "high",
+      "manual": false
+    },
+    {
+      "id": "CVE-2026-52346",
+      "product": "mikrotik",
+      "title": "Firewall tls-host: чтение за границей памяти",
+      "ranges": [
+        [
+          ">=7.0",
+          "<7.21.4"
+        ],
+        [
+          ">=7.22",
+          "<7.22.2"
+        ]
+      ],
+      "ports": "TCP TLS трафик, например 443; фиксированного порта нет",
+      "conditions": "Нужно правило firewall tls-host; его наличие без учётной записи не определяется",
+      "references": [
+        "https://www.cve.org/CVERecord?id=CVE-2026-52346",
+        "https://mikrotik.com/supportsec/cve-2026-52346/"
+      ],
+      "severity": "high",
+      "manual": false
+    },
+    {
+      "id": "CVE-2026-93345",
+      "product": "mikrotik",
+      "title": "BGP VPN NLRI: отказ в обслуживании",
+      "ranges": [
+        [
+          ">=6.0",
+          "<7.25"
+        ]
+      ],
+      "ports": "TCP 179 BGP",
+      "conditions": "Нужен путь к BGP с labelled VPN NLRI; опубликованный фикс 7.25beta4, prerelease версии требуют ручной проверки",
+      "references": [
+        "https://www.cve.org/CVERecord?id=CVE-2026-93345",
+        "https://forum.mikrotik.com/t/7-25beta-development-is-released/272788",
+        "https://www.vulncheck.com/advisories/mikrotik-routeros-improper-input-validation-dos-via-bgp-labelled-vpn-nlri"
+      ],
+      "severity": "high",
+      "manual": false
+    },
+    {
+      "id": "CVE-2025-56566",
+      "product": "mikrotik",
+      "title": "Flash: хранение секретов в открытом виде",
+      "ranges": [],
+      "ports": "Сетевого порта нет",
+      "conditions": "Физический доступ / дамп SPI flash; удалённым сетевым сканом не подтверждается",
+      "references": [
+        "https://www.cve.org/CVERecord?id=CVE-2025-56566",
+        "https://github.com/RIFTI-Offensive-Security/security-advisories/blob/main/CVE-2025-56566.md"
+      ],
+      "severity": "medium",
+      "manual": true
+    },
+    {
+      "id": "CVE-2026-16347",
+      "product": "mikrotik",
+      "title": "API: недостаточная защита от подбора",
+      "ranges": [],
+      "ports": "TCP 8728 API / 8729 API-SSL",
+      "conditions": "CNA указывает все версии; для проверки ограничений нужны попытки входа. Не включено в обычный скан; проверять в отдельной категории подбора",
+      "references": [
+        "https://www.cve.org/CVERecord?id=CVE-2026-16347",
+        "https://www.cisa.gov/news-events/ics-advisories/icsa-26-209-05"
+      ],
+      "severity": "high",
+      "manual": true
+    },
+    {
+      "id": "CVE-2026-14227",
+      "product": "mikrotik",
+      "title": "API: сохранение прав активной сессии",
+      "ranges": [],
+      "ports": "TCP 8728 API / 8729 API-SSL",
+      "conditions": "Нужна учётная запись и контролируемое изменение её прав; по версии не подтверждается",
+      "references": [
+        "https://www.cve.org/CVERecord?id=CVE-2026-14227",
+        "https://www.cisa.gov/news-events/ics-advisories/icsa-26-211-01"
+      ],
+      "severity": "medium",
+      "manual": true
+    },
+    {
+      "id": "CVE-2026-90970",
+      "product": "gitlab-ai-gateway",
+      "title": "AI Gateway: выполнение команд через шаблон prompt",
+      "ranges": [],
+      "ports": "TCP 5052 HTTP, 50052 gRPC Duo Agent Platform; TLS reverse proxy 443/8443 или настроенные порты",
+      "conditions": "Отдельный GitLab Self-Hosted AI Gateway, не GitLab CE/EE. Нужна учётная запись Duo Agent Platform. Исправлено 19.2.4/19.3.2/19.4.1; уязвимо с 18.1.6. Версия ядра GitLab не определяет версию Gateway; ручная проверка образа.",
+      "references": [
+        "https://docs.gitlab.com/releases/patches/other-patches/patch-release-gitlab-ai-gateway-19-4-1-released/",
+        "https://docs.gitlab.com/install/install_ai_gateway/"
+      ],
+      "severity": "critical",
+      "manual": true
+    }
+  ]
+}

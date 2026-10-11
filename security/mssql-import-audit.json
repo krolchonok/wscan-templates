@@ -1,0 +1,559 @@
+{
+  "schema_version": 1,
+  "method": "source inspection and PDF reading only; regex analysis mirrors current Go catalogue; no runtime loading or targets",
+  "app_root_relative_to_library": "..",
+  "source_sha256": {
+    "internal/engine/js/mssql.go": "c269102990c6d714f848b5662be892d5f2a4ffea7dedfda977d9525889433f82",
+    "internal/engine/js/runtime.go": "b75b0abbf51b7640f8772f6fdb0a0069cde919c3e2152df65b30c44808fa48e4",
+    "internal/engine/js/net.go": "2d6d2755e0607fcde32a02ea6dd0edd3516893d2d5c6b8ae3c46dc5da7e10e26",
+    "internal/engine/javascript.go": "2e84cb4721cab5d647fdafc3b52bec1033eea6f9381a9373cde12f36752f4e02",
+    "internal/engine/spray.go": "0ca3e0a9d9af1568c570c60033012c1342fbd9e465ec2fd2ed5c71fea3844526",
+    "internal/engine/modules.go": "50eab6e2b61840e3d81842d8cf18d30c63aeabe634f422b878b0c443a8528fee",
+    "internal/nse/check.go": "84d275ceb571fbb9694bf462e677c9e44ed87f8fe1e1dddca0430866398228cc",
+    "internal/nse/output.go": "1f427c6ef0aabe78e2213ff75a4b59a4229143f0ab670cec658592c0a57d1aee",
+    "internal/nse/nse.go": "392dc507aeae566a8b032ea51e6edcc38dcf04584d01808bb9eae4e28309d35c",
+    "internal/tui/nsescan.go": "9d11086d77fa4d4b7b286ad42c2e30b60b1b5913f1202d2c4b6d68fd34172cb1",
+    "internal/catalog/catalog.go": "cbbdc3e1bdfae6304d5d8fa132fd138582f86ebc4ae34284d2a428806b0dd846",
+    "internal/catalog/categories.go": "8dc819cdaa4e4a0ca5e8b0aeef2f41125edb53387587a66cd38793b0c13a83d6",
+    "internal/template/parse.go": "21b21f125ed70d03348e4277cd750f189d1cd34b5ad521d7124f9a1adbcbab3f",
+    "internal/template/scope.go": "f87be104a1b72b713f0089eb86d9d92985e53cbe50e03c53fa45908936a1fc06",
+    "internal/discovery/ports.go": "85288d7341bd76e2e142366ae4f4f36c3ac79486b57c218d93634344e33fcdbe",
+    "internal/discovery/version.go": "554889a5e510b5622addda8bd9edbc46c81af50aaffcee65408a1f8bd6de6b79",
+    "internal/engine/js/smb.go": "0c082041bbbb3cb1120bf09fa3e5024590b214a3e0ed09d028f198a3a4f7543f",
+    "internal/engine/js/smb_browser.go": "3d03578bfa5db78e5e024b536c9e2617be181021b19cc2684181b6d3f3796ec8",
+    "internal/engine/js/winrm.go": "ef2c1e661e4f704aa53c2fa6c1b662c50fcf1b0251738413491004dedf36e8c0",
+    "internal/oast/oast.go": "f4ca1e8f470e3eb283ae1340c19ea6eb3a040b116793b400fb48b08aaae6f258",
+    "go.mod": "2db48d9916486db89b45a88878bb7d8e6db642ef8128dca21b0298be915a2208"
+  },
+  "pdfs": [
+    {
+      "path": "9e4d90d0-7fc8-426f-a098-51fbd1f03319.pdf",
+      "title": "Responder Write-up",
+      "pages": 11,
+      "sha256": "ba9d58f53931916f2dcf86b95c658f90e09e033744b66ba744d439e2bb15c933"
+    },
+    {
+      "path": "9e4d90d3-11c1-417c-8636-fdbaa096937f.pdf",
+      "title": "Archetype Write-up",
+      "pages": 16,
+      "sha256": "9c8dceb7d288312d9db9b96546055273cb5275885adec789e4b62bf1d5a1ce20"
+    }
+  ],
+  "checks": [
+    {
+      "path": "nmap/scripts/broadcast-ms-sql-discover.nse",
+      "kind": "nse",
+      "sha256": "632922062a5a7533847764ee727aab16f38a676aa6f225bf7c9174e642cc29b9",
+      "catalogued": true,
+      "category": {
+        "path": "nmap/scripts/broadcast-ms-sql-discover.nse",
+        "kind": "nse",
+        "service": "Базы данных",
+        "types": [
+          "Широковещательная разведка",
+          "Безопасные проверки"
+        ],
+        "nse_categories": [
+          "broadcast",
+          "safe"
+        ],
+        "impact": "Обнаружение",
+        "product": "broadcast"
+      },
+      "static_rule_matches": {
+        "service_rule": false,
+        "action": true,
+        "portrule": false,
+        "hostrule": false,
+        "prerule": true
+      },
+      "runtime_status": "blocked_by_static_catalog_checks",
+      "limitations": [
+        "prerule-only broadcast check is outside selected service"
+      ],
+      "network_executed": false
+    },
+    {
+      "path": "nmap/scripts/ms-sql-brute.nse",
+      "kind": "nse",
+      "sha256": "640ff6d9ed7c7ffd0c6ca8e3c44bbbd265a1e98920cc9fda37cce12e8d20e5ff",
+      "catalogued": true,
+      "category": {
+        "path": "nmap/scripts/ms-sql-brute.nse",
+        "kind": "nse",
+        "service": "Базы данных",
+        "types": [
+          "Подбор учётных данных"
+        ],
+        "nse_categories": [
+          "brute",
+          "intrusive"
+        ],
+        "impact": "Сильное воздействие",
+        "product": "ms"
+      },
+      "static_rule_matches": {
+        "service_rule": false,
+        "action": true,
+        "portrule": false,
+        "hostrule": false,
+        "prerule": false
+      },
+      "runtime_status": "blocked_by_static_catalog_checks",
+      "limitations": [
+        "catalog marks GlobalScope and unavailable; multiple assignment is not recognized",
+        "CheckSource does not recognize rule declaration"
+      ],
+      "network_executed": false
+    },
+    {
+      "path": "nmap/scripts/ms-sql-config.nse",
+      "kind": "nse",
+      "sha256": "6c70708dabb66d9bbcc0995fb8be9985c7cc4068357f8334c087f97937bb8692",
+      "catalogued": true,
+      "category": {
+        "path": "nmap/scripts/ms-sql-config.nse",
+        "kind": "nse",
+        "service": "Базы данных",
+        "types": [
+          "Обнаружение",
+          "Безопасные проверки"
+        ],
+        "nse_categories": [
+          "discovery",
+          "safe"
+        ],
+        "impact": "Обнаружение",
+        "product": "ms"
+      },
+      "static_rule_matches": {
+        "service_rule": false,
+        "action": false,
+        "portrule": false,
+        "hostrule": false,
+        "prerule": false
+      },
+      "runtime_status": "blocked_by_static_catalog_checks",
+      "limitations": [
+        "catalog marks GlobalScope and unavailable; multiple assignment is not recognized",
+        "CheckSource rejects action assigned by helper rather than literal function",
+        "CheckSource does not recognize rule declaration"
+      ],
+      "network_executed": false
+    },
+    {
+      "path": "nmap/scripts/ms-sql-dac.nse",
+      "kind": "nse",
+      "sha256": "dc4a0da86b05de13844060d207883a34cce3efb098a15de980a821be0c42618c",
+      "catalogued": true,
+      "category": {
+        "path": "nmap/scripts/ms-sql-dac.nse",
+        "kind": "nse",
+        "service": "Базы данных",
+        "types": [
+          "Обнаружение",
+          "Безопасные проверки"
+        ],
+        "nse_categories": [
+          "discovery",
+          "safe"
+        ],
+        "impact": "Обнаружение",
+        "product": "ms"
+      },
+      "static_rule_matches": {
+        "service_rule": true,
+        "action": false,
+        "portrule": true,
+        "hostrule": true,
+        "prerule": false
+      },
+      "runtime_status": "blocked_by_static_catalog_checks",
+      "limitations": [
+        "CheckSource rejects action assigned by helper rather than literal function"
+      ],
+      "network_executed": false
+    },
+    {
+      "path": "nmap/scripts/ms-sql-dump-hashes.nse",
+      "kind": "nse",
+      "sha256": "1ee87aa92adc3ceb7ab4ab02b8b628ab5590e0875e01f2c9d02f893ce37e6756",
+      "catalogued": true,
+      "category": {
+        "path": "nmap/scripts/ms-sql-dump-hashes.nse",
+        "kind": "nse",
+        "service": "Базы данных",
+        "types": [
+          "Аутентификация",
+          "Обнаружение",
+          "Безопасные проверки"
+        ],
+        "nse_categories": [
+          "auth",
+          "discovery",
+          "safe"
+        ],
+        "impact": "Активные проверки",
+        "product": "ms"
+      },
+      "static_rule_matches": {
+        "service_rule": false,
+        "action": false,
+        "portrule": false,
+        "hostrule": false,
+        "prerule": false
+      },
+      "runtime_status": "blocked_by_static_catalog_checks",
+      "limitations": [
+        "catalog marks GlobalScope and unavailable; multiple assignment is not recognized",
+        "CheckSource rejects action assigned by helper rather than literal function",
+        "CheckSource does not recognize rule declaration"
+      ],
+      "network_executed": false
+    },
+    {
+      "path": "nmap/scripts/ms-sql-empty-password.nse",
+      "kind": "nse",
+      "sha256": "356dc3ba3f37cfee1bd7e5dd24a262abbd76db947d93ce1dca0aa4ca72ddd073",
+      "catalogued": true,
+      "category": {
+        "path": "nmap/scripts/ms-sql-empty-password.nse",
+        "kind": "nse",
+        "service": "Базы данных",
+        "types": [
+          "Аутентификация",
+          "Интенсивные проверки"
+        ],
+        "nse_categories": [
+          "auth",
+          "intrusive"
+        ],
+        "impact": "Сильное воздействие",
+        "product": "ms"
+      },
+      "static_rule_matches": {
+        "service_rule": false,
+        "action": false,
+        "portrule": false,
+        "hostrule": false,
+        "prerule": false
+      },
+      "runtime_status": "blocked_by_static_catalog_checks",
+      "limitations": [
+        "catalog marks GlobalScope and unavailable; multiple assignment is not recognized",
+        "CheckSource rejects action assigned by helper rather than literal function",
+        "CheckSource does not recognize rule declaration"
+      ],
+      "network_executed": false
+    },
+    {
+      "path": "nmap/scripts/ms-sql-hasdbaccess.nse",
+      "kind": "nse",
+      "sha256": "76f52b7dd36506b6cb669b53d10831d38edf9f90ebca9cdf3d8935c2b1bed6a7",
+      "catalogued": true,
+      "category": {
+        "path": "nmap/scripts/ms-sql-hasdbaccess.nse",
+        "kind": "nse",
+        "service": "Базы данных",
+        "types": [
+          "Аутентификация",
+          "Обнаружение",
+          "Безопасные проверки"
+        ],
+        "nse_categories": [
+          "auth",
+          "discovery",
+          "safe"
+        ],
+        "impact": "Активные проверки",
+        "product": "ms"
+      },
+      "static_rule_matches": {
+        "service_rule": false,
+        "action": false,
+        "portrule": false,
+        "hostrule": false,
+        "prerule": false
+      },
+      "runtime_status": "blocked_by_static_catalog_checks",
+      "limitations": [
+        "catalog marks GlobalScope and unavailable; multiple assignment is not recognized",
+        "CheckSource rejects action assigned by helper rather than literal function",
+        "CheckSource does not recognize rule declaration"
+      ],
+      "network_executed": false
+    },
+    {
+      "path": "nmap/scripts/ms-sql-info.nse",
+      "kind": "nse",
+      "sha256": "d5dd4a27581e860bf11ba840dd14cba1bc2a41b1dc06424413f4f867c6f96b2f",
+      "catalogued": true,
+      "category": {
+        "path": "nmap/scripts/ms-sql-info.nse",
+        "kind": "nse",
+        "service": "Базы данных",
+        "types": [
+          "Стандартные проверки",
+          "Обнаружение",
+          "Безопасные проверки"
+        ],
+        "nse_categories": [
+          "default",
+          "discovery",
+          "safe"
+        ],
+        "impact": "Обнаружение",
+        "product": "ms"
+      },
+      "static_rule_matches": {
+        "service_rule": false,
+        "action": false,
+        "portrule": false,
+        "hostrule": false,
+        "prerule": false
+      },
+      "runtime_status": "blocked_by_static_catalog_checks",
+      "limitations": [
+        "catalog marks GlobalScope and unavailable; multiple assignment is not recognized",
+        "CheckSource rejects action assigned by helper rather than literal function",
+        "CheckSource does not recognize rule declaration"
+      ],
+      "network_executed": false
+    },
+    {
+      "path": "nmap/scripts/ms-sql-ntlm-info.nse",
+      "kind": "nse",
+      "sha256": "c31e7b349b377de2abce434a61f7dd23643d1c45e36a54fbf752f3134dc9c8cd",
+      "catalogued": true,
+      "category": {
+        "path": "nmap/scripts/ms-sql-ntlm-info.nse",
+        "kind": "nse",
+        "service": "Базы данных",
+        "types": [
+          "Стандартные проверки",
+          "Обнаружение",
+          "Безопасные проверки"
+        ],
+        "nse_categories": [
+          "default",
+          "discovery",
+          "safe"
+        ],
+        "impact": "Обнаружение",
+        "product": "ms"
+      },
+      "static_rule_matches": {
+        "service_rule": false,
+        "action": false,
+        "portrule": false,
+        "hostrule": false,
+        "prerule": false
+      },
+      "runtime_status": "blocked_by_static_catalog_checks",
+      "limitations": [
+        "catalog marks GlobalScope and unavailable; multiple assignment is not recognized",
+        "CheckSource rejects action assigned by helper rather than literal function",
+        "CheckSource does not recognize rule declaration"
+      ],
+      "network_executed": false
+    },
+    {
+      "path": "nmap/scripts/ms-sql-query.nse",
+      "kind": "nse",
+      "sha256": "f3a8472e1edb79edc62be292d2735c41baa3bd25f1ef00d9cb4ae8038d9ed594",
+      "catalogued": true,
+      "category": {
+        "path": "nmap/scripts/ms-sql-query.nse",
+        "kind": "nse",
+        "service": "Базы данных",
+        "types": [
+          "Обнаружение",
+          "Безопасные проверки"
+        ],
+        "nse_categories": [
+          "discovery",
+          "safe"
+        ],
+        "impact": "Обнаружение",
+        "product": "ms"
+      },
+      "static_rule_matches": {
+        "service_rule": false,
+        "action": true,
+        "portrule": false,
+        "hostrule": false,
+        "prerule": false
+      },
+      "runtime_status": "blocked_by_static_catalog_checks",
+      "limitations": [
+        "catalog marks GlobalScope and unavailable; multiple assignment is not recognized",
+        "CheckSource does not recognize rule declaration"
+      ],
+      "network_executed": false
+    },
+    {
+      "path": "nmap/scripts/ms-sql-tables.nse",
+      "kind": "nse",
+      "sha256": "9d0ecaf2ca9673eef967e1c1d5317e1a9c0b638a3957d3616aed080a8d7b6136",
+      "catalogued": true,
+      "category": {
+        "path": "nmap/scripts/ms-sql-tables.nse",
+        "kind": "nse",
+        "service": "Базы данных",
+        "types": [
+          "Обнаружение",
+          "Безопасные проверки"
+        ],
+        "nse_categories": [
+          "discovery",
+          "safe"
+        ],
+        "impact": "Обнаружение",
+        "product": "ms"
+      },
+      "static_rule_matches": {
+        "service_rule": false,
+        "action": false,
+        "portrule": false,
+        "hostrule": false,
+        "prerule": false
+      },
+      "runtime_status": "blocked_by_static_catalog_checks",
+      "limitations": [
+        "catalog marks GlobalScope and unavailable; multiple assignment is not recognized",
+        "CheckSource rejects action assigned by helper rather than literal function",
+        "CheckSource does not recognize rule declaration"
+      ],
+      "network_executed": false
+    },
+    {
+      "path": "nmap/scripts/ms-sql-xp-cmdshell.nse",
+      "kind": "nse",
+      "sha256": "0160d0774065c7b1d70b865eb014a59d519f7777229fa40408a2b91681c31c41",
+      "catalogued": true,
+      "category": {
+        "path": "nmap/scripts/ms-sql-xp-cmdshell.nse",
+        "kind": "nse",
+        "service": "Базы данных",
+        "types": [
+          "Интенсивные проверки"
+        ],
+        "nse_categories": [
+          "intrusive"
+        ],
+        "impact": "Сильное воздействие",
+        "product": "ms"
+      },
+      "static_rule_matches": {
+        "service_rule": false,
+        "action": true,
+        "portrule": false,
+        "hostrule": false,
+        "prerule": false
+      },
+      "runtime_status": "blocked_by_static_catalog_checks",
+      "limitations": [
+        "catalog marks GlobalScope and unavailable; multiple assignment is not recognized",
+        "CheckSource does not recognize rule declaration"
+      ],
+      "network_executed": false
+    },
+    {
+      "path": "nuclei-templates/javascript/detection/mssql-detect.yaml",
+      "kind": "nuclei",
+      "sha256": "0d9f618862c9f438e4df638d6ab61d068cf0bb1bd202d574a95bc9b5813cb914",
+      "catalogued": true,
+      "category": {
+        "path": "javascript/detection/mssql-detect.yaml",
+        "kind": "nuclei",
+        "service": "Базы данных",
+        "types": [
+          "JavaScript"
+        ],
+        "tags": [
+          "js",
+          "mssql",
+          "detect",
+          "network",
+          "discovery"
+        ],
+        "impact": "Обнаружение",
+        "name": "Microsoft SQL(mssql) - Detect"
+      },
+      "runtime_status": "incorrect_detection",
+      "limitations": [
+        "IsMssql only opens TCP; does not validate TDS; literal port 1433"
+      ],
+      "network_executed": false
+    },
+    {
+      "path": "nuclei-templates/javascript/default-logins/mssql-default-logins.yaml",
+      "kind": "nuclei",
+      "sha256": "4350f07231d53d9e4f50292e6c73a8c09e850f8c39a9861034d239340c2f7413",
+      "catalogued": true,
+      "category": {
+        "path": "javascript/default-logins/mssql-default-logins.yaml",
+        "kind": "nuclei",
+        "service": "Базы данных",
+        "types": [
+          "Подбор учётных данных"
+        ],
+        "tags": [
+          "js",
+          "mssql",
+          "default-login",
+          "network",
+          "vuln"
+        ],
+        "impact": "Сильное воздействие",
+        "name": "Microsoft Sql - Default Logins"
+      },
+      "runtime_status": "not_implemented",
+      "limitations": [
+        "MSSQLClient.Connect returns not implemented; literal port 1433; 4 usernames x 3 passwords"
+      ],
+      "network_executed": false
+    },
+    {
+      "path": "nuclei-templates/javascript/udp/detection/mssql-browser-detect.yaml",
+      "kind": "nuclei",
+      "sha256": "9af1a9c080787f69de156f673995e7025c970aed5b90680bccaa15e67b661ecb",
+      "catalogued": true,
+      "category": {
+        "path": "javascript/udp/detection/mssql-browser-detect.yaml",
+        "kind": "nuclei",
+        "service": "Базы данных",
+        "types": [
+          "JavaScript"
+        ],
+        "tags": [
+          "mssql",
+          "microsoft",
+          "sql",
+          "database",
+          "network",
+          "js",
+          "udp",
+          "detection"
+        ],
+        "impact": "Обнаружение",
+        "name": "MS-SQL Browser Service - Detect"
+      },
+      "runtime_status": "candidate_not_verified",
+      "limitations": [
+        "UDP Open/SendHex/RecvString implemented; literal UDP 1434; extractor exposes only ServerName"
+      ],
+      "network_executed": false
+    }
+  ],
+  "counts": {
+    "reviewed_mssql_core_checks": 15,
+    "nse_checks": 12,
+    "nuclei_checks": 3,
+    "network_runs": 0,
+    "tests": 0
+  },
+  "caveat": "Availability from source inspection is not a successful engine/target run. Application source, binary and stale graph/docs may differ.",
+  "snapshot_phase": "before_implementation",
+  "superseded_by": "security/external-audit-implementation.json"
+}
